@@ -15,7 +15,7 @@
     public function connect(){
    $this->link=new PDO("mysql:host=".$this->host.";dbname:".$this->dbname."",$this->user,$this->pass);
    if($this->link)     { 
-    echo "bien connected sure date base ";
+    echo "bien connected sure database ";
    }
     }
     //selection tous data à la base de donnée 
@@ -43,7 +43,7 @@
     //insert query
     public function Insert($query,$arry,$path){
         if($this->validate($arry)=="empty"){
-           echo "<script> alert('un ou plisuer chomp est vide !!')</script>" 
+           echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
         }else{
             $insert=$this->link->prepare($query);
             $insert->execute($arry);
@@ -53,7 +53,7 @@
     //update query
     public function Update($query,$arry,$path){
         if($this->validate($arry)=="empty"){
-           echo "<script> alert('un ou plisuer chomp est vide !!')</script>" 
+           echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
         }else{
             $update=$this->link->prepare($query);
             $update->execute($arry);
@@ -70,8 +70,41 @@
     
     public function validate($arry){
         if(in_array("",$arry)){
-            echo "empty";
+            echo "empty";  //return empty 
+        }
+    }
+
+    public function register($query,$arry,$path){
+        if($this->validate($arry)=="empty"){
+           echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
+        }else{
+            $register=$this->link->prepare($query);
+            $register->execute($arry);
+            header("location: ".$path."");
+        }
+    }
+
+    public function login($query,$data,$path){
+       //email
+       $login= $this->link->prepare($query);
+       $login->execute();
+       $fetch = $login->fetch(PDO::FETCH_OBJ);
+       if($login->rowCount() >0){
+           if(password_verify($data['password'],$fetch['password'])){
+            // commencer variable de sission
+            header("location:".$path."");
+           }
+       }
+    }
+    // commencer session 
+    public function startingSession(){
+        session_start();
+    }
+    //   validating session 
+    public function validateSession($path){
+        if(isset($_SESSION['id'])){
+            header("location:".$path."");
         }
     }
  }
- $con = new App();
+ $con = new App;
