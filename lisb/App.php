@@ -13,9 +13,9 @@
     }
 
     public function connect(){
-   $this->link=new PDO("mysql:host=".$this->host.";dbname:".$this->dbname."",$this->user,$this->pass);
+   $this->link=new PDO("mysql:host=".$this->host.";dbname=".$this->dbname."",$this->user,$this->pass);
    if($this->link)     { 
-    echo "bien connected sure database ";
+    // echo "bien connected sure database ";
    }
     }
     //selection tous data à la base de donnée 
@@ -68,18 +68,18 @@
             header("location: ".$path."");
     }
     
-    public function validate($arry){
-        if(in_array("",$arry)){
+    public function validate($arr){
+        if(in_array("",$arr)){
             echo "empty";  //return empty 
         }
     }
 
-    public function register($query,$arry,$path){
-        if($this->validate($arry)=="empty"){
+    public function register($query,$arr,$path){
+        if($this->validate($arr)=="empty"){
            echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
         }else{
             $register=$this->link->prepare($query);
-            $register->execute($arry);
+            $register->execute($arr);
             header("location: ".$path."");
         }
     }
