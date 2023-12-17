@@ -1,8 +1,8 @@
 <?php
-define("HOST","localhost");
-define("DBNAME","restoran");
-define("USER","root");
-define("PASS","omar2001");
+define("HOST","localhost") ;
+define("DBNAME","restoran") ;
+define("USER","root") ;
+define("PASS","omar2001") ;
 
 
 // try{

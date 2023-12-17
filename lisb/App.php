@@ -1,6 +1,6 @@
 <?php 
- require "../config/config.php";?>
- <?php 
+//  require "../config/config.php";
+
  class App{
     public $host=HOST;
     public $dbname=DBNAME;
@@ -107,4 +107,4 @@
         }
     }
  }
- $con = new App;
+//  $con = new App();
