@@ -62,7 +62,7 @@ define("APPURL","http://localhost/restoran");
 
                       
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="login.html" class="nav-item nav-link">Login</a>
+                        <a href="Auth/login.php" class="nav-item nav-link">Login</a>
                         <a href="Auth/register.php" class="nav-item nav-link">Register</a>
                     </div>
                    
