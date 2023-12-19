@@ -40,7 +40,7 @@ if(isset($_POST["submit"])){
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Register</h5>
                         <h1 class="text-white mb-4">Register for a new user</h1>
-                        <form class="col-md-12" method="POST" action="#">
+                        <form class="col-md-12" method="POST" action="register.php">
                             <div class="row g-3">
                                 <div class="">
                                     <div class="form-floating">

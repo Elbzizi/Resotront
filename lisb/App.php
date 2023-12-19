@@ -88,12 +88,15 @@
        //email
        $login= $this->link->prepare($query);
        $login->execute();
-       $fetch = $login->fetch(PDO::FETCH_OBJ);
-       if($login->rowCount() >0){
+       $fetch = $login->fetch(PDO::FETCH_ASSOC);
+       if($login->rowCount() > 0){
            if(password_verify($data['password'],$fetch['password'])){
             // commencer variable de sission
             header("location:".$path."");
            }
+        //    else{
+        //     echo "<script>alert('email ou password inccoricte !!')</script>";
+        //    }
        }
     }
     // commencer session 
