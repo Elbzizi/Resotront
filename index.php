@@ -1,5 +1,6 @@
-<?php require "config/config.php"; 
-// require("lisb/App.php"); 
+<?php 
+require "config/config.php"; 
+require("lisb/App.php"); 
 require "includes/header.php" ; 
  ?>
             <div class="container-xxl py-5 bg-dark hero-header mb-5">

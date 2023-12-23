@@ -1,6 +1,4 @@
 <?php 
-//  require "../config/config.php";
-
  class App{
     public $host=HOST;
     public $dbname=DBNAME;
@@ -92,6 +90,9 @@
        if($login->rowCount() > 0){
            if(password_verify($data['password'],$fetch['password'])){
             // commencer variable de sission
+            $_SESSION['email'] =$fetch['email'];
+            $_SESSION['username'] =$fetch['username'];
+            $_SESSION['user_id'] =$fetch['id'];
             header("location:".$path."");
            }
         //    else{
@@ -104,9 +105,10 @@
         session_start();
     }
     //   validating session 
-    public function validateSession($path){
-        if(isset($_SESSION['id'])){
-            header("location:".$path."");
+    public function validateSession(){
+        if(isset($_SESSION['user_id'])){
+            // header("location:".APPURL."");mrdmatch 
+            echo "<script>window.location.href='".APPURL."'</script>";
         }
     }
  }

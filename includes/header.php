@@ -1,6 +1,9 @@
-<?php 
-define("APPURL","http://localhost/restoran");
+<?php
+$app = new App;
+$app->startingSession();
+define("APPURL", "http://localhost/restoran");
 ?>
+
 <head>
     <meta charset="utf-8">
     <title>Restoran - Bootstrap Restaurant Template</title>
@@ -13,7 +16,9 @@ define("APPURL","http://localhost/restoran");
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -34,7 +39,8 @@ define("APPURL","http://localhost/restoran");
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -58,13 +64,28 @@ define("APPURL","http://localhost/restoran");
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Service</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <a href="cart.html" class="nav-item nav-link"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
-
-                      
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="Auth/login.php" class="nav-item nav-link">Login</a>
-                        <a href="Auth/register.php" class="nav-item nav-link">Register</a>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <a href="cart.html" class="nav-item nav-link"><i
+                                    class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
+                                    <?= $_SESSION['username'] ; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="<?= APPURL ; ?>/Auth/logout.php">Log Out</a></li>
+                                </ul>
+                            </li>
+                        <?php else: ?>
+                            <a href="<?= APPURL ; ?>/Auth/login.php" class="nav-item nav-link">Login</a>
+                            <a href="<?= APPURL ; ?>/Auth/register.php" class="nav-item nav-link">Register</a>
+                        <?php endif ?>
                     </div>
-                   
+
                 </div>
             </nav>
