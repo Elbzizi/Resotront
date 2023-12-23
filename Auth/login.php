@@ -5,6 +5,7 @@ require('../includes/header.php');
 ?>
 <?php
 $app = new App();
+$app->validateSession();
 if(isset($_POST["submit"])){
     $email=htmlspecialchars($_POST["email"]);
     $password=$_POST["password"];
