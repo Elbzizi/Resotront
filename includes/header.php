@@ -1,5 +1,5 @@
 <?php
-$app = new App;
+$app = new App();
 $app->startingSession();
 define("APPURL", "http://localhost/restoran");
 ?>
