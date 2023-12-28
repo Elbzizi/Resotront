@@ -38,6 +38,13 @@
            return false;
         }
     }
+    // validate cart
+    public function ValidateCart($quer){
+        $row =$this->link->query($quer);
+        $row->execute(); 
+        $count=$row->rowCount();
+        return $count;
+    }
     //insert query
     public function Insert($query,$arry,$path){
         if($this->validate($arry)=="empty"){
@@ -45,7 +52,8 @@
         }else{
             $insert=$this->link->prepare($query);
             $insert->execute($arry);
-            header("location: ".$path."");
+            // header("location: ".$path."");Mrdmatch
+            echo "<script>window.location.href='".$path."'</script>";
         }
     }
     //update query

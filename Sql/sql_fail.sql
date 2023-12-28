@@ -4,7 +4,8 @@ use restoran;
 create table users (
 id int primary key auto_increment,
 username varchar(150) not null,
-email varchar(150) not null,password varchar(100) not null,
+email varchar(150) not null,
+password varchar(100) not null,
 create_at timestamp not null default current_timestamp()
 );
 CREATE TABLE `foods` (
@@ -31,6 +32,19 @@ INSERT INTO `foods` (`id`, `name`, `image`, `description`, `prix`, `meal_id`, `c
 (7, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38');
 
 -- -
+CREATE TABLE `cart` (
+  `id` int(10) NOT NULL primary key auto_increment ,
+  `item_id` int(10) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `prix` varchar(10) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `created-at` timestamp NOT NULL DEFAULT current_timestamp()
+) ;
+
+INSERT INTO `cart` (`id`, `item_id`, `name`, `prix`, `image`, `user_id`, `created-at`) VALUES
+(default, 1, 'chicken wings', '10', 'menu-1.jpg', 1, '2023-04-11 09:22:55'),
+(default, 2, 'steak', '30', 'menu-3.jpg', 1, '2023-04-11 11:01:48');
 
 /*
 CREATE TABLE `users` (
