@@ -10,7 +10,9 @@ $cart_prix=$app->SelectOne("SELECT sum(prix) as all_prix from cart where user_id
 
 if(isset($_POST["submit"])){
     $_SESSION['prix']=$cart_prix->all_prix;
-    header("location:checkout.php");
+    // header("location:checkout.php");Mrdmatch
+    echo "<script>window.location.href='".APPURL."/food/checkout.php'</script>";
+
 }
 ?>
 <style>
