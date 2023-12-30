@@ -2,8 +2,16 @@
 require "../config/config.php";
 require "../lisb/App.php";
 require "../includes/header.php";
+$app=new App;
+$query="SELECT * from cart where user_id= $_SESSION[user_id] ";
+$allCart=$app->SelectAll($query);
+$cart_prix=$app->SelectOne("SELECT sum(prix) as all_prix from cart where user_id= $_SESSION[user_id]");
 ?>
-
+<style>
+    td{
+        vertical-align: middle;
+    }
+</style>
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
                     <h1 class="display-3 text-white mb-3 animated slideInDown">Cart</h1>
@@ -23,38 +31,34 @@ require "../includes/header.php";
             <div class="container">
                 
                 <div class="col-md-12">
-                    <table class="table">
+                    <table class="table " >
                         <thead>
                           <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Prix</th>
                             <th scope="col">Delete</th>
                           </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($allCart as $val) : ?>
                           <tr>
-                            <th>image</th>
-                            <td>Pizza</td>
-                            <td>$10</td>
-                            <td><a class="btn btn-danger text-white">delete</td>
+                            <td><img  width="130px" height="80px" src="<?php echo APPURL.' /img/'.$val->image ?>" /></td>
+                            <td><?= $val->name ?></td>
+                            <td><?= $val->prix ?> MAD</td>
+                            <td><a class="btn btn-outline-danger text-white"
+                            href="<?php echo APPURL.' /food/delet-item.php?id='.$val->id?>"
+                            ><img src="<?php echo APPURL ?>/img/delete.png" /></td>
                           </tr>
-                          <tr>
-                            <th>image</th>
-                            <td>Pizza</td>
-                            <td>$10</td>
-                            <td><a class="btn btn-danger text-white">delete</td>
-                          </tr>
-                          <tr>
-                            <th>image</th>
-                            <td>Pizza</td>
-                            <td>$10</td>
-                            <td><a class="btn btn-danger text-white">delete</td>
-                          </tr>
+                          <?php endforeach;?>
                         </tbody>
                       </table>
-                      <div class="position-relative mx-auto" style="max-width: 400px; padding-left: 679px;">
-                        <p style="margin-left: -7px;" class="w-19 py-3 ps-4 pe-5" type="text"> Total: $100</p>
+                      <!-- <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
+                        <p style="margin-left: -7px;" class="w-50 py-3 ps-4 pe-5"> Total: <?= $cart_prix->all_prix ; ?> MAD</p>
+                        <button type="button" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
+                    </div> -->
+                    <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
+                        <p style="width :200px ">  Total: <b> <?= $cart_prix->all_prix ; ?> </b> MAD</p>
                         <button type="button" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
                     </div>
                 </div>
