@@ -71,7 +71,8 @@
       
             $delete=$this->link->prepare($query);
             $delete->execute();
-            header("location: ".$path."");
+            // header("location: ".$path."");Mrdmatch
+            echo "<script>window.location.href='".$path."'</script>";
     }
     
     public function validate($arr){

@@ -6,6 +6,12 @@ $app=new App;
 $query="SELECT * from cart where user_id= $_SESSION[user_id] ";
 $allCart=$app->SelectAll($query);
 $cart_prix=$app->SelectOne("SELECT sum(prix) as all_prix from cart where user_id= $_SESSION[user_id]");
+
+
+if(isset($_POST["submit"])){
+    $_SESSION['prix']=$cart_prix->all_prix;
+    header("location:checkout.php");
+}
 ?>
 <style>
     td{
@@ -41,16 +47,17 @@ $cart_prix=$app->SelectOne("SELECT sum(prix) as all_prix from cart where user_id
                           </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($allCart as $val) : ?>
+                           <?php 
+                             foreach ($allCart as $val) : ?>
                           <tr>
                             <td><img  width="130px" height="80px" src="<?php echo APPURL.' /img/'.$val->image ?>" /></td>
                             <td><?= $val->name ?></td>
                             <td><?= $val->prix ?> MAD</td>
                             <td><a class="btn btn-outline-danger text-white"
-                            href="<?php echo APPURL.' /food/delet-item.php?id='.$val->id?>"
+                            href="<?php echo APPURL.' /food/delete-item.php?id='.$val->id?>"
                             ><img src="<?php echo APPURL ?>/img/delete.png" /></td>
                           </tr>
-                          <?php endforeach;?>
+                          <?php endforeach ;?>
                         </tbody>
                       </table>
                       <!-- <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
@@ -59,7 +66,9 @@ $cart_prix=$app->SelectOne("SELECT sum(prix) as all_prix from cart where user_id
                     </div> -->
                     <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
                         <p style="width :200px ">  Total: <b> <?= $cart_prix->all_prix ; ?> </b> MAD</p>
-                        <button type="button" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
+                        <form action="cart.php" method="post">
+                            <button type="submit" name="submit" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
+                        </form>
                     </div>
                 </div>
             </div>
