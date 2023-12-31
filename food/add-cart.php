@@ -16,7 +16,7 @@ if( isset($_SESSION['user_id'])){
 
 if(isset($_POST['submit'])){
 
-    echo $name=$_POST['name'];
+    $name=$_POST['name'];
     $item_id=$_POST['item_id'];
     $prix=$_POST['prix'];
     $image=$_POST['image'];
