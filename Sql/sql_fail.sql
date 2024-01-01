@@ -46,7 +46,35 @@ INSERT INTO `cart` (`id`, `item_id`, `name`, `prix`, `image`, `user_id`, `create
 (default, 1, 'chicken wings', '10', 'menu-1.jpg', 1, '2023-04-11 09:22:55'),
 (default, 2, 'steak', '30', 'menu-3.jpg', 1, '2023-04-11 11:01:48');
 
-/*
+
+CREATE TABLE `orders` (
+  `id` int(10) primary key NOT NULL auto_increment,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `town` varchar(200) NOT NULL,
+  `country` varchar(200) NOT NULL,
+  `zipcode` int(20) NOT NULL,
+  `phone_number` int(50) NOT NULL,
+  `address` text NOT NULL,
+  `total_prix` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `status` varchar(200) NOT NULL DEFAULT 'Pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ;
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `email`, `town`, `country`, `zipcode`, `phone_number`, `address`, `total_price`, `user_id`, `status`, `created_at`) VALUES
+(7, 'Mohamed Hassan', 'moha@gmail.com', 'town', 'country', 209332, 123034333, 'Progressively communicate user friendly internal o', 10, 1, 'Pending', '2023-04-11 09:37:21'),
+(8, 'Mohamed Hassan', 'moha@gmail.com	', 'sample town', 'sample town', 923, 19232234, 'Efficiently exploit dynamic e-tailers before high-quality core competencies. Quickly administrate ', 40, 1, 'Pending', '2023-04-11 10:38:52'),
+(9, 'Mohamed Hassan', 'moha@gmail.com	', 'sample town', 'sample country', 2923, 10233444, 'Progressively communicate user friendly internal o', 30, 1, 'Pending', '2023-04-11 10:47:40'),
+(10, 'Mohamed Hassan', 'moha@gmail.com', 'sample town', 'sample country', 990032, 1929344, 'Collaboratively plagiarize maintainable products after viral growth strategies. Efficiently aggregate efficient ', 40, 1, 'Pending', '2023-04-11 11:02:45');
+
+
+
+
+
+/*=======================================================================
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `username` varchar(200) NOT NULL,
