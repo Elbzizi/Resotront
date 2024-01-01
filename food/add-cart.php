@@ -20,7 +20,6 @@ if(isset($_POST['submit'])){
     $item_id=$_POST['item_id'];
     $prix=$_POST['prix'];
     $image=$_POST['image'];
-    // $id_user=$_SESSION['user_id'];
 $query="INSERT INTO cart values (default,?,?,?,?,?,default) ";
 $arry=[$item_id,$name,$prix,$image,$id_user];
 $path="cart.php";
