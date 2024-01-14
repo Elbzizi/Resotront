@@ -4,7 +4,12 @@ require("../lisb/App.php");
 require "../includes/header.php";
 
 $app= new App() ;
-$id=$_GET['id'];
+if(isset($_GET['id'])){
+  $id=$_GET['id'];  
+}else{
+    echo "<script>window.location.href='".APPURL."/404.php'</script>";
+ }
+
 $query=" SELECT * from foods where id = $id ";
 $taba9=$app->SelectOne($query) ;
 
@@ -12,7 +17,7 @@ if( isset($_SESSION['user_id'])){
     $id_user= $_SESSION['user_id'] ; 
     $quer="SELECT * from cart where item_id=$id and user_id= $id_user ";
     $count= $app->ValidateCart($quer);
- } 
+ }
 
 if(isset($_POST['submit'])){
 
