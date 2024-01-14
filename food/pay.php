@@ -37,7 +37,7 @@ require "../includes/header.php";?>
                             return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: '<?php echo $_SESSION['total_price']; ?>' // Can also reference a variable or function
+                                    value: '<?php echo $_SESSION['prix']; ?>' // Can also reference a variable or function
                                 }
                             }]
                             });
