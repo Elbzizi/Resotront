@@ -192,7 +192,7 @@ $meal_3 = $app->SelectAll($query3);
                                         <small class="fst-italic">
                                             <?= $meal->description ?>
                                         </small>
-                                        <a type="button" href="<?php echo APPURL .'/food/add-cart.php?id='.$meal->id; ?>"
+                                        <a type="button" href="<?php echo APPURL . '/food/add-cart.php?id=' . $meal->id; ?>"
                                             class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@ $meal_3 = $app->SelectAll($query3);
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
                     <div class="row g-4">
-                    <?php foreach ($meal_2 as $meal): ?>
+                        <?php foreach ($meal_2 as $meal): ?>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded" src="<?php echo 'img/' . $meal->image ?>"
@@ -219,7 +219,7 @@ $meal_3 = $app->SelectAll($query3);
                                         <small class="fst-italic">
                                             <?= $meal->description ?>
                                         </small>
-                                        <a type="button" href="<?php echo APPURL .'/food/add-cart.php?id='.$meal->id; ?>"
+                                        <a type="button" href="<?php echo APPURL . '/food/add-cart.php?id=' . $meal->id; ?>"
                                             class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@ $meal_3 = $app->SelectAll($query3);
                 </div>
                 <div id="tab-3" class="tab-pane fade show p-0">
                     <div class="row g-4">
-                    <?php foreach ($meal_3 as $meal): ?>
+                        <?php foreach ($meal_3 as $meal): ?>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded" src="<?php echo 'img/' . $meal->image ?>"
@@ -242,11 +242,11 @@ $meal_3 = $app->SelectAll($query3);
                                             <span class="text-primary">
                                                 <?= $meal->prix ?> MAD
                                             </span>
-                                            </h5>
+                                        </h5>
                                         <small class="fst-italic">
                                             <?= $meal->description ?>
                                         </small>
-                                        <a type="button" href="<?php echo APPURL .'/food/add-cart.php?id='.$meal->id; ?>"
+                                        <a type="button" href="<?php echo APPURL . '/food/add-cart.php?id=' . $meal->id; ?>"
                                             class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
                                     </div>
                                 </div>
@@ -276,46 +276,48 @@ $meal_3 = $app->SelectAll($query3);
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
                 <h1 class="text-white mb-4">Book A Table Online</h1>
-                <form>
+                <form action="Ajouter-booking.php" method="POST">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="email" name="email" class="form-control" id="email"
+                                    placeholder="Your Email">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating date" id="date3" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" id="datetime"
+                                <input type="text" name="date" class="form-control datetimepicker-input" id="datetime"
                                     placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
                                 <label for="datetime">Date & Time</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <select class="form-select" id="select1">
-                                    <option value="1">People 1</option>
-                                    <option value="2">People 2</option>
-                                    <option value="3">People 3</option>
+                                <select num_people class="form-select" id="select1">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                                 <label for="select1">No Of People</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Special Request" id="message"
-                                    style="height: 100px"></textarea>
+                                <textarea name="Special_Request" class="form-control" placeholder="Special Request"
+                                    id="message" style="height: 100px"></textarea>
                                 <label for="message">Special Request</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                            <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                         </div>
                     </div>
                 </form>
