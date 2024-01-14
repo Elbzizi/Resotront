@@ -61,10 +61,10 @@ define("APPURL", "http://localhost/restoran");
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="<?= APPURL ?>" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="<?= APPURL.'/about.php' ?>" class="nav-item nav-link">About</a>
+                        <a href="<?= APPURL.'/service.php' ?>" class="nav-item nav-link">Service</a>
+                        <a href=" <?= APPURL.'/menu.php' ?>" class="nav-item nav-link">Menu</a>
+                        <a href="<?= APPURL.'/contact.php' ?>" class="nav-item nav-link">Contact</a>
                         <?php if (isset($_SESSION['username'])): ?>
                             <a href="<?php echo APPURL.' /food/cart.php' ?>" class="nav-item nav-link"><i
                                     class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>

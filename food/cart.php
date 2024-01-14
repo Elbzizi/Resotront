@@ -37,7 +37,7 @@ if(isset($_POST["submit"])){
 
         <!-- Service Start -->
             <div class="container">
-                
+           <?php if($cart_prix->all_prix>0): ?>
                 <div class="col-md-12">
                     <table class="table " >
                         <thead>
@@ -60,6 +60,11 @@ if(isset($_POST["submit"])){
                             ><img src="<?php echo APPURL ?>/img/delete.png" /></td>
                           </tr>
                           <?php endforeach ;?>
+                        <?php  else : ?>
+                          <p class="bg-warning text-center p-3">il n'y a pas de plats vous devez ajouter des plats !!!
+                            <strong><a class="text-white p-1" href="<?=APPURL.'/menu.php'?>">Menu click ici</a></strong>
+                          </p>
+                          <?php endif ?>
                         </tbody>
                       </table>
                       <!-- <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">

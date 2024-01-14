@@ -31,8 +31,8 @@ $app->Insert($query,$arry,$path);
                     <h1 class="display-3 text-white mb-3 animated slideInDown"><?=$taba9->name?></h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Cart</a></li>
+                            <li class="breadcrumb-item"><a href="<?=APPURL?>">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?=APPURL.'/food/cart.php'?>">Cart</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -67,10 +67,10 @@ $app->Insert($query,$arry,$path);
                            
                         </div>
                         <form action="add-cart.php?id=<?php echo $id; ?>" method="POST">
-                           <input type="text" name="name" value="<?=$taba9->name?>">
-                           <input type="text" name="image" value="<?=$taba9->image?>">
-                           <input type="text" name="prix" value="<?=$taba9->prix?>">
-                           <input type="text" name="item_id" value="<?=$taba9->id?>">
+                           <input type="hidden" name="name" value="<?=$taba9->name?>">
+                           <input type="hidden" name="image" value="<?=$taba9->image?>">
+                           <input type="hidden" name="prix" value="<?=$taba9->prix?>">
+                           <input type="hidden" name="item_id" value="<?=$taba9->id?>">
                         <?php   if($count > 0) :  ?>
                            <input type="submit" disabled name="submit" class="btn btn-danger py-3 px-5 mt-2" value="déja exist">
                            <?php  else :?>
@@ -85,3 +85,4 @@ $app->Insert($query,$arry,$path);
 <?php 
 require "../includes/footer.php";
 ?>
+
