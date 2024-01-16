@@ -10,7 +10,7 @@ if(isset($_GET['id'])){
     echo "<script>window.location.href='".APPURL."/404.php'</script>";
  }
 
-$query=" SELECT * from foods where id = $id ";
+$query="SELECT * from foods where id = $id ";
 $taba9=$app->SelectOne($query) ;
 
 if( isset($_SESSION['user_id'])){

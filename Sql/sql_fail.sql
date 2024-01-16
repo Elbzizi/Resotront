@@ -72,7 +72,7 @@ INSERT INTO `orders` (`id`, `name`, `email`, `town`, `country`, `zipcode`, `phon
 
 
 CREATE TABLE `bookings` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL primary key auto_increment,
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `date_booking` varchar(200) NOT NULL,

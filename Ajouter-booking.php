@@ -3,6 +3,11 @@ require "config/config.php";
 require("lisb/App.php");
 require "includes/header.php";
 
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
+}else{
+    echo "<script>window.location.href='".APPURL."/Auth/login.php'</script>";
+}
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $num_people = $_POST['num_people'];
@@ -10,10 +15,8 @@ if (isset($_POST['submit'])) {
     $date = $_POST['date'];
     $Special_Request = $_POST['Special_Request'];
     $status = 'pending';
-    $user_id = $_SESSION['user_id'];
-    
     if ($date > date("m/d/Y h:i:sa")) {
-        $query = "INSERT INTO booking values (default,?,?,?,?,?,?,?,default) ";
+        $query = "INSERT INTO bookings values (default,?,?,?,?,?,?,?,default)";
         $arry = [$name, $email, $date, $num_people, $Special_Request, $status, $user_id];
         $path = "index.php";
         $app->Insert($query, $arry, $path);

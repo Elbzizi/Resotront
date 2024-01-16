@@ -300,7 +300,7 @@ $meal_3 = $app->SelectAll($query3);
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <select num_people class="form-select" id="select1">
+                                <select name="num_people" class="form-select" id="select1">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
