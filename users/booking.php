@@ -45,29 +45,16 @@ $bookings=$app->SelectAll($query);
                            <?php 
                              foreach ($bookings as $val) : ?>
                           <tr>
-                            <td><img  width="130px" height="80px" src="<?php echo APPURL.' /img/'.$val->image ?>" /></td>
                             <td><?= $val->name ?></td>
-                            <td><?= $val->prix ?> MAD</td>
-                            <td><a class="btn btn-outline-danger text-white"
-                            href="<?php echo APPURL.' /food/delete-item.php?id='.$val->id?>"
-                            ><img src="<?php echo APPURL ?>/img/delete.png" /></td>
+                            <td><?= $val->email ?></td>
+                            <td><?= $val->date_booking ?></td>
+                            <td><?= $val->num_people ?></td>
+                            <td><?= $val->special_request ?></td>
+                            <td><?= $val->status ?></td>
                           </tr>
                           <?php endforeach ;?>
-                          <p class="bg-warning text-center p-3">il n'y a pas de plats vous devez ajouter des plats !!!
-                            <strong><a class="text-white p-1" href="<?=APPURL.'/menu.php'?>">Menu click ici</a></strong>
-                          </p>
                         </tbody>
                       </table>
-                      <!-- <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
-                        <p style="margin-left: -7px;" class="w-50 py-3 ps-4 pe-5"> Total: <?= $cart_prix->all_prix ; ?> MAD</p>
-                        <button type="button" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
-                    </div> -->
-                    <div class="position-relative mx-auto" style="max-width: 500px; padding-left: 679px;">
-                        <p style="width :200px ">  Total: <b> <?= $cart_prix->all_prix ; ?> </b> MAD</p>
-                        <form action="cart.php" method="post">
-                            <button type="submit" name="submit" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Checkout</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         <!-- Service End -->
