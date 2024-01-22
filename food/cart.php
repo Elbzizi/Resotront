@@ -2,6 +2,9 @@
 require "../config/config.php";
 require "../lisb/App.php";
 require "../includes/header.php";
+if(!isset($_SESSION['user_id'])){
+  echo "<script>window.location.href='".APPURL."'</script>";
+}
 $app=new App;
 $query="SELECT * from cart where user_id= $_SESSION[user_id] ";
 $allCart=$app->SelectAll($query);

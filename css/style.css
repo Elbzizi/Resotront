@@ -1,3 +1,6 @@
+table{
+    text-align: center;
+}
 /********** Template CSS **********/
 :root {
     --primary: #FEA116;

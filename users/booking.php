@@ -30,9 +30,9 @@ $bookings=$app->SelectAll($query);
         <!-- Service Start -->
             <div class="container">
                 <div class="col-md-12">
-                    <table class="table " >
+                    <table class="table table-striped p-2" >
                         <thead>
-                          <tr>
+                          <tr class="table-dark" >
                             <th scope="col">Name</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Date Booking</th>

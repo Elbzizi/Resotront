@@ -3,6 +3,11 @@ require "config/config.php";
 require("lisb/App.php");
 require "includes/header.php";
 
+if(!isset($_SERVER['HTTP_REFERER'])){
+    echo "<script>window.location.href='".APPURL."'</script>";
+    exit;
+}
+
 if(isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
 }else{
@@ -26,22 +31,6 @@ if (isset($_POST['submit'])) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 require "includes/footer.php";
 ?>
