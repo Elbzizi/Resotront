@@ -33,8 +33,17 @@ $meal_3 = $app->SelectAll($query3);
 
 
 <!-- Service Start -->
+
 <div class="container-xxl py-5">
     <div class="container">
+        <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])) { ?>
+            <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                <strong>
+                    <?= $_SESSION['message'] ?>
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
         <div class="row g-4">
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item rounded pt-3">

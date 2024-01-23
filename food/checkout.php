@@ -23,7 +23,8 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO orders values (default,?,?,?,?,?,?,?,?,?,default,default)";
     $arry = [$name, $email, $town, $country, $zipcode, $phone, $adress, $prix, $user_id];
     $path="pay.php";
-    $app->Insert($query, $arry, $path);
+    $message="pay with paypal ";
+    $app->Insert($query, $arry, $path,$message);
 }
 
 

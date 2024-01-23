@@ -15,7 +15,6 @@ if(isset($_POST["submit"])){
     $_SESSION['prix']=$cart_prix->all_prix;
     // header("location:checkout.php");Mrdmatch
     echo "<script>window.location.href='".APPURL."/food/checkout.php'</script>";
-
 }
 ?>
 <style>
@@ -40,6 +39,14 @@ if(isset($_POST["submit"])){
 
         <!-- Service Start -->
             <div class="container">
+            <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])) { ?>
+            <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                <strong>
+                    <?= $_SESSION['message'] ?>
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
            <?php if($cart_prix->all_prix>0): ?>
                 <div class="col-md-12">
                     <table class="table " >
