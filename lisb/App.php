@@ -46,13 +46,14 @@
         return $count;
     }
     //insert query
-    public function Insert($query,$arry,$path){
+    public function Insert($query,$arry,$path,$message){
         if($this->validate($arry)=="empty"){
            echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
         }else{
             $insert=$this->link->prepare($query);
             $insert->execute($arry);
             // header("location: ".$path."");Mrdmatch
+            $_SESSION['message']=$message;
             echo "<script>window.location.href='".$path."'</script>";
         }
     }
@@ -67,10 +68,11 @@
         }
     }
     //delete query
-    public function Delete($query,$path){
+    public function Delete($query,$path,$message){
       
             $delete=$this->link->prepare($query);
             $delete->execute();
+            $_SESSION['message']=$message;
             // header("location: ".$path."");Mrdmatch
             echo "<script>window.location.href='".$path."'</script>";
     }

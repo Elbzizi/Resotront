@@ -26,6 +26,14 @@ require "../includes/header.php";?>
             </div>
         </div>
     <div class="container">  
+    <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])) { ?>
+            <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
+                <strong>
+                    <?= $_SESSION['message'] ?>
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
                     <!-- Replace "test" with your own sandbox Business account app client ID -->
                     <script src="https://www.paypal.com/sdk/js?client-id=Aexh9I8Rq-2NkKh6T7BPSi4tdyxVIOnAT_A8kOp-VdVxfU3Cs0WBlBFa-pJgICVTngyex-J2p6nLd95j&currency=USD"></script>
                     <!-- Set up a container element for the button -->

@@ -28,7 +28,8 @@ if(isset($_POST['submit'])){
 $query="INSERT INTO cart values (default,?,?,?,?,?,default) ";
 $arry=[$item_id,$name,$prix,$image,$id_user];
 $path="cart.php";
-$app->Insert($query,$arry,$path);
+$message="add to cart successfully";
+$app->Insert($query,$arry,$path,$message);
 }
 ?>
             <div class="container-xxl py-5 bg-dark hero-header mb-5">

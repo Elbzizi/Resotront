@@ -8,5 +8,6 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 $app=new App;
-$app->Delete("DELETE from cart where user_id= $_SESSION[user_id]",APPURL);
+$message="pay successfully and cart empty";
+$app->Delete("DELETE from cart where user_id= $_SESSION[user_id]",APPURL,$message);
 ?>
