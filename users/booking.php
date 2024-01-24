@@ -29,6 +29,14 @@ $bookings=$app->SelectAll($query);
 
         <!-- Service Start -->
             <div class="container">
+            <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])) { ?>
+            <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                <strong>
+                    <?= $_SESSION['message'] ?>
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
                 <div class="col-md-12">
                     <table class="table table-striped p-2" >
                         <thead>
