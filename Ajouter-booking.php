@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
         $query = "INSERT INTO bookings values (default,?,?,?,?,?,?,?,default)";
         $arry = [$name, $email, $date, $num_people, $Special_Request, $status, $user_id];
         $path = "index.php";
-        $message="booking bien ajouter !!!!";
+        $message="booking successful";
         $app->Insert($query, $arry, $path, $message);
     } else {
         echo "<script>alert('date invalide choisissez une date à partir de demain')</script>";
