@@ -39,6 +39,9 @@ $bookings=$app->SelectAll($query);
                             <th scope="col">Num People</th>
                             <th scope="col">Special Request</th>
                             <th scope="col">status</th>
+                            <?php if($bookings[0]->status=="Confirmed") :?>
+                            <th scope="col">Review Us</th>
+                            <?php endif;?>
                           </tr>
                         </thead>
                         <tbody>
@@ -51,6 +54,11 @@ $bookings=$app->SelectAll($query);
                             <td><?= $val->num_people ?></td>
                             <td><?= $val->special_request ?></td>
                             <td><?= $val->status ?></td>
+                            <?php if($val->status=="Confirmed") :?>
+                            <td>
+                <a class="btn btn-success" href="<?= APPURL ?>/users/review.php">Rivew Us</a>
+                            </td>
+                            <?php endif;?>
                           </tr>
                           <?php endforeach ;?>
                         </tbody>

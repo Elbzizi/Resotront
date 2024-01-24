@@ -326,7 +326,12 @@ $meal_3 = $app->SelectAll($query3);
                             </div>
                         </div>
                         <div class="col-12">
+                            <?php if(isset($_SESSION['user_id'])) :?>
                             <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                            <?php else :?>
+                                <strong>Login To Book Table :</strong>
+                            <a href="<?= APPURL ?>/Auth/login.php" class="btn btn-primary w-100 py-3" type="submit">Login Now</a>
+                        <?php endif ?>
                         </div>
                     </div>
                 </form>
