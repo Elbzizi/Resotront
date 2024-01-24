@@ -94,7 +94,21 @@ INSERT INTO `bookings` (`id`, `name`, `email`, `date_booking`, `num_people`, `sp
 (5, 'Mohamed Hassan', 'moha123@gmail.com', '04/13/2023 12:45 PM', 2, 'Energistically actualize B2B web-readiness after', 'Pending', 1, '2023-04-11 10:48:59'),
 (6, 'Mohamed Hassan', 'Moha123@gmail.com', '04/12/2023 12:59 PM', 2, 'Quickly grow prospective ideas and backend ', 'Pending', 1, '2023-04-11 11:00:15');
 
+CREATE TABLE `reviews` (
+  `id` int(10) NOT NULL,
+  `review` text NOT NULL,
+  `username` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `review`, `username`, `created_at`) VALUES
+(1, 'Collaboratively empower visionary infomediaries through installed base outsourcing. Progressively iterate B2C communities and top-line content. ', 'Mohamed Hassan', '2023-04-09 14:09:46'),
+(2, ' outsourcing. Progressively iterate B2C communities and top-line content. ', 'Mohamed Hassan', '2023-04-09 14:09:46'),
+(3, '', 'Mohamed123', '2023-04-11 10:49:50');
 
 
 
