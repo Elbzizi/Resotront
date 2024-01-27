@@ -68,6 +68,8 @@ define("APPURL", "http://localhost/restoran");
                         <?php if (isset($_SESSION['username'])): ?>
                             <a href="<?php echo APPURL.' /food/cart.php' ?>" class="nav-item nav-link"><i
                                     class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
+                                    <a href="<?php echo APPURL?>/booking.php" class="nav-item nav-link"><i
+                                    class="fa-sharp fa-solid fa-cart-shopping"></i>Booking</a>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
                                     <?= $_SESSION['username']  ?>
