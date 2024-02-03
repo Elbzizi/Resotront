@@ -127,5 +127,10 @@
             echo "<script>window.location.href='".APPURL."'</script>";
         }
     }
+    public function validateAdmin(){
+        if(!isset($_SESSION['admin'])){
+     return "<script>window.location.href='".APPURL."/Auth/login.php'</script>";
+        }
+    }
  }
 //  $con = new App();

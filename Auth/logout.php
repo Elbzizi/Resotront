@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("location:http://localhost/restoran");
+header("location:http://localhost/restoran/Auth/login.php");
 
 ?>

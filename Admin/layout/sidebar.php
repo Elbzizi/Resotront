@@ -17,7 +17,7 @@
           <img src="<?=APPADM?>assets/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?= $_SESSION['admin'] ?></a>
         </div>
       </div>
 
@@ -68,11 +68,12 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="<?=APPURL?>/Auth/logout.php" class="nav-link">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <i class="nav-icon fa fa-user-circle" aria-hidden="true"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                LogOut 
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
