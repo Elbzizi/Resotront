@@ -93,7 +93,7 @@
         }
     }
 
-    public function login($query,$data,$path){
+    public function login($query,$data){
        //email
        $login= $this->link->prepare($query);
        $login->execute();
@@ -104,7 +104,12 @@
             $_SESSION['email'] =$fetch['email'];
             $_SESSION['username'] =$fetch['username'];
             $_SESSION['user_id'] =$fetch['id'];
-            header("location:".$path."");
+            if($fetch["is_admin"]){
+            $_SESSION['admin'] =$fetch['username'];
+                header("location:".APPURL."/Admin");
+            }else{
+                header("location:".APPURL."");
+            }
            }
         //    else{
         //     echo "<script>alert('email ou password inccoricte !!')</script>";

@@ -4,7 +4,7 @@
       <img src="../assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a> -->
-    <a href="" class="navbar-brand p-0">
+    <a href="http://localhost/restoran" class="navbar-brand p-0">
      <h1 class="text-orange ml-3 mt-3"><i class="fa fa-utensils me-3"></i>Restoran</h1>
         <!-- <img src="img/logo.png" alt="Logo"> -->
     </a>
@@ -14,7 +14,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../assets/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="<?=APPADM?>assets/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>

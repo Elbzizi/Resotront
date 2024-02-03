@@ -1,6 +1,5 @@
 <?php 
  $title="Admin | Dashboard";
- $contante="Admin panel";
 include_once("header.php") ;
 
 ?>
@@ -8,5 +7,9 @@ include_once("header.php") ;
  <?php require_once('sidebar.php') ?>
 
   <!-- Content Wrapper. Contains page content -->
-  <?= $contante ; ?>
-  <?php include_once('footer.php') ?>
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+      <h1><?= $contante ; ?></h1>
+  </div>
+  
+  <?php include_once('footer.php'); ?>

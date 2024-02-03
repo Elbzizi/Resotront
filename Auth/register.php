@@ -10,7 +10,7 @@ if(isset($_POST["submit"])){
     $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
     // $query='INSERT INTO users (username,email,password) values (default,us=:us,email=:email,pass=:pass,default)';
     // $arr=["us"=>$username,"email"=>$email,"pass"=>$password];
-    $query='INSERT INTO users  values (default,?,?,?,default)';
+    $query='INSERT INTO users  values (default,?,?,?,default,default)';
      $arr=[$username,$email,$password];
     $path="login.php";
     $app->register($query,$arr,$path);
