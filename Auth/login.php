@@ -11,8 +11,7 @@ if(isset($_POST["submit"])){
     $password=$_POST["password"];
     $query="SELECT * from users where email ='$email'";
      $arr=["email"=>$email,"password"=>$password];
-    $path="http://localhost/restoran" ;
-    $app->login($query,$arr,$path);
+    $app->login($query,$arr);
 }
 ?>
                 <div class="collapse navbar-collapse" id="navbarCollapse">

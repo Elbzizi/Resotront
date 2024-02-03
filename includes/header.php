@@ -87,6 +87,9 @@ define("APPURL", "http://localhost/restoran");
                             <a href="<?= APPURL ; ?>/Auth/login.php" class="nav-item nav-link">Login</a>
                             <a href="<?= APPURL ; ?>/Auth/register.php" class="nav-item nav-link">Register</a>
                         <?php endif ?>
+                        <?php if(isset($_SESSION["admin"])) :?>
+                        <a href="<?= APPURL.'/Admin' ?>" class="nav-item nav-link"> Dashboard</a>
+                        <?php endif ?>
                     </div>
 
                 </div>
