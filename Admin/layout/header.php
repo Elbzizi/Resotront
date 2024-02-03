@@ -1,7 +1,11 @@
 <?php 
-// require_once("../../config/config.php") ;
-//  require_once("../../lisb/App.php"); 
+require_once("../config/config.php") ;
+require_once("../lisb/App.php"); 
+$app = new App();
+$app->startingSession();
  define("APPADM","http://localhost/restoran/Admin/");
+ define("APPURL","http://localhost/restoran/");
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
