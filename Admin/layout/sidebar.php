@@ -1,3 +1,8 @@
+<style>
+  .bg-orange{
+  border-radius: 8px;
+} 
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <!-- <a href="index3.html" class="brand-link">
@@ -39,7 +44,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link bg-orange active">
+            <a href="#" class="nav-link  ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -48,7 +53,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./index.html" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
@@ -67,6 +72,17 @@
               </li>
             </ul>
           </li>
+          <!-- start=================== -->
+          <li class="nav-item <?= $listadmin ?>">
+            <a href="<?=APPADM?>/ListAdmin.php" class="nav-link">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <i class="nav-icon fa fa-user-circle" aria-hidden="true"></i>
+              <p>
+                Liste Admins 
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="<?=APPURL?>/Auth/logout.php" class="nav-link">
               <!-- <i class="nav-icon fas fa-th"></i> -->
@@ -77,6 +93,7 @@
               </p>
             </a>
           </li>
+          <!-- =end ================================================ -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

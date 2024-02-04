@@ -7,7 +7,6 @@ div.dt-autofill-handle {
   background: #0275d8;
   cursor: pointer;
 }
-
 div.dtk-focus-alt div.dt-autofill-handle {
   background: #ff8b33;
 }
