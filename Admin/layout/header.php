@@ -1,10 +1,12 @@
-<?php 
+<?php
+  define("APPADM","http://localhost/restoran/Admin/");
+ define("APPURL","http://localhost/restoran/");
 require_once("../config/config.php") ;
 require_once("../lisb/App.php"); 
 $app = new App();
 $app->startingSession();
- define("APPADM","http://localhost/restoran/Admin/");
- define("APPURL","http://localhost/restoran/");
+
+ $app->validateAdmin();
 
  ?>
 <!DOCTYPE html>
@@ -35,6 +37,11 @@ $app->startingSession();
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/summernote/summernote-bs4.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
