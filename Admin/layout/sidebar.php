@@ -43,7 +43,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <!-- <li class="nav-item menu-open">
             <a href="#" class="nav-link  ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -71,8 +71,19 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!-- start=================== -->
+          <li class="nav-item <?= $index ?>">
+            <a href="<?=APPADM?>/index.php" class="nav-link">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Dashboard
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
           <li class="nav-item <?= $listadmin ?>">
             <a href="<?=APPADM?>/ListAdmin.php" class="nav-link">
               <!-- <i class="nav-icon fas fa-th"></i> -->
