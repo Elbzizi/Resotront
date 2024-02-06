@@ -5,6 +5,7 @@ include_once("layout/header.php") ;
 $nbfood=$app->SelectOne("SELECT count(*) as num from foods");
 $nborder=$app->SelectOne("SELECT count(*) as num from orders");
 $nbusers=$app->SelectOne("SELECT count(*) as num from users where is_admin=false");
+$booking=$app->SelectOne("SELECT count(*) as num from booking ");
 ?>
   <!-- Main Sidebar Container -->
  <?php require_once('layout/sidebar.php') ?>
@@ -66,9 +67,10 @@ $nbusers=$app->SelectOne("SELECT count(*) as num from users where is_admin=false
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?=$booking->num?></h3>
 
-                <p>Unique Visitors</p>
+                <!-- <p>Unique Visitors</p> -->
+                <p>Booking</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
