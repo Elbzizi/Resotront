@@ -83,13 +83,21 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
           <li class="nav-item <?= $listadmin ?>">
             <a href="<?=APPADM?>/ListAdmin.php" class="nav-link">
               <!-- <i class="nav-icon fas fa-th"></i> -->
               <i class="nav-icon fa fa-user-circle" aria-hidden="true"></i>
               <p>
                 Liste Admins 
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item <?= $listorders ?>">
+            <a href="<?=APPADM?>/ShowOrders.php" class="nav-link">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <p>
+                Liste Orders
                 <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
