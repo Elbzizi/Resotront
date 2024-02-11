@@ -102,30 +102,51 @@ $admins = $app->SelectAll("SELECT * from users where is_Admin = 1");
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="ListAdmin.php">
+        <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Full Name :</label>
-            <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="text" id="username" class="form-control"  aria-describedby="emailHelp"
               placeholder="Enter full name ...">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">E-mail address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="email" id="email" class="form-control"  aria-describedby="emailHelp"
               placeholder="Enter email ...">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+            <input type="password" id="password" class="form-control" 
               placeholder="Password">
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="save" class="btn btn-primary">Save </button>
+        <button type="button" onclick="Ajoter()" id="save" data-dismiss="modal"  class="btn btn-primary">Save </button>
       </div>
     </div>
   </div>
 </div>
+<script>
+function Ajoter() {
+        var data={
+          username:$("#username").val(),
+          email:$("#email").val(),
+          password:$("#password").val(),
+          save:"save"
+        }
+          $.ajax({
+            method: "post",
+            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
+            data: data,
+            success: function () {
+              alert("Add Admin Sccussefully");
+            },
+            error: function (xhr, status, error) {
+              alert(error); // le message de error ex:not faund
+            },
+          });
+        };
+    </script>
 <?php
 
 if (isset($_POST['save'])) {
@@ -137,6 +158,6 @@ if (isset($_POST['save'])) {
   $message = "create Admin successfully";
   $path = "ListAdmin.php";
   $app->Insert($query, $arr, $path, $message);
+  echo "Insert Admin successfully";
 }
-
 include_once('layout/footer.php'); ?>

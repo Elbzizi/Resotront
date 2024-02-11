@@ -41,14 +41,19 @@ $app->startingSession();
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+<!-- jQuery -->
+<script src="<?= APPADM ?>assets/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?= APPADM ?>assets/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <!-- <img class="animation__shake" src="<?= APPADM ?>assets/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
+    <a href="<?= APPURL ?>" class="navbar-brand p-0">
+                    <h1 style="font-size:50px;font-weight:bolder" class="text-orange  m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
   </div>
 
   <!-- Navbar -->
