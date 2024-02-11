@@ -58,13 +58,14 @@
         }
     }
     //update query
-    public function Update($query,$arry,$path){
+    public function Update($query,$arry,$path,$message){
         if($this->validate($arry)=="empty"){
            echo "<script> alert('un ou plisuer chomp est vide !!')</script>" ;
         }else{
             $update=$this->link->prepare($query);
             $update->execute($arry);
-            header("location: ".$path."");
+            $_SESSION['message']=$message;
+            echo "<script>window.location.href='".$path."'</script>";
         }
     }
     //delete query

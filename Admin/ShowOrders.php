@@ -51,7 +51,7 @@ $orders = $app->SelectAll("SELECT * from orders");
         <tbody>
           <?php foreach ($orders as $value): ?>
             <tr>
-            <td>
+              <td>
                 <?= $value->id ?>
               </td>
               <td>
@@ -73,23 +73,27 @@ $orders = $app->SelectAll("SELECT * from orders");
                 <?= $value->address ?>
               </td>
               <td>
-                <?= $value->total_prix ?>
+                <?= $value->total_prix ?> DH
               </td>
               <td>
-                <?= $value->status ?>
+              <button onclick="Action('update',<?=$value->id?>)"  class="btn <?php 
+             if($value->status=="Pending"){echo "btn-warning";}else{echo "btn-success";}  ?> text-white">
+              <?= $value->status ?>
+                </button> 
               </td>
               <td>
-                <?= $value->created_at ?>
+                <button  onclick="Action('delete',<?=$value->id?>)" class="btn btn-outline-danger text-white">
+                  <img src="<?php echo APPURL ?>/img/delete.png" /> 
+                </button>        
               </td>
-              <td>
-                <?= $value->created_at ?>
-              </td>
+             
+
             </tr>
           <?php endforeach; ?>
         </tbody>
         <tfoot>
-          <tr>
-          <th>ID </th>
+        <tr>
+            <th>ID </th>
             <th>Name</th>
             <th>E-mail</th>
             <th>Town</th>
@@ -97,9 +101,8 @@ $orders = $app->SelectAll("SELECT * from orders");
             <th>Phone</th>
             <th>Address</th>
             <th>Prix</th>
-            <th>user_id </th>
             <th>status</th>
-            <th>Date</th>
+            <th>Delete</th>
           </tr>
         </tfoot>
       </table>
@@ -108,17 +111,43 @@ $orders = $app->SelectAll("SELECT * from orders");
   </div>
 
 </div>
+<script>
+  function Action(type,id) {
+          $.ajax({
+            method: "post",
+            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
+            data:{type:type,id:id},
+            success: function () {
+              alert(Update status successfully);
+            },
+            error: function (xhr, status, error) {
+              alert(error);
+            },
+          });
+        };
+</script>
 <?php
 
-// if (isset($_POST['save'])) {
-//   $username = htmlspecialchars($_POST["username"]);
-//   $email = htmlspecialchars($_POST["email"]);
-//   $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-//   $query = 'INSERT INTO users  values (default,?,?,?,default,true)';
-//   $arr = [$username, $email, $password];
-//   $message = "create Admin successfully";
-//   $path = "ListAdmin.php";
-//   $app->Insert($query, $arr, $path, $message);
-//   echo "Insert Admin successfully";
-// }
+if (isset($_POST['type'])) {
+  $id = htmlspecialchars($_POST["id"]);
+  if($_POST['type']=="update"){
+    $order=$app->SelectOne("select * from orders where id='$id'");
+    if($order->status=="Pending"){
+      $status="Confirmed";
+    }else{
+      $status="Pending";
+    }
+    $query="UPDATE orders set status=? where id=?";
+    $arr = [$status,$id];
+    $message = "Update Order successfully";
+    $path = "ListAdmin.php";
+    $app->Update($query, $arr, $path, $message);
+  }else if($_POST['type']=="delete"){
+    $query="DELETE from orders  where id=?";
+    $arr = [$id];
+    $message = "DELETE Order successfully";
+    $path = "ListAdmin.php";
+    $app->Update($query, $arr, $path, $message);
+  }
+}
 include_once('layout/footer.php'); ?>
