@@ -39,8 +39,8 @@ $orders = $app->SelectAll("SELECT * from orders");
             <th>ID </th>
             <th>Name</th>
             <th>E-mail</th>
-            <th>Town</th>
-            <th>Country </th>
+            <!-- <th>Town</th>
+            <th>Country </th> -->
             <th>Phone</th>
             <th>Address</th>
             <th>Prix</th>
@@ -50,7 +50,7 @@ $orders = $app->SelectAll("SELECT * from orders");
         </thead>
         <tbody>
           <?php foreach ($orders as $value): ?>
-            <tr>
+            <tr id="<?= $value->id ?>">
               <td>
                 <?= $value->id ?>
               </td>
@@ -60,12 +60,12 @@ $orders = $app->SelectAll("SELECT * from orders");
               <td>
                 <?= $value->email ?>
               </td>
-              <td>
+              <!-- <td>
                 <?= $value->town ?>
               </td>
               <td>
                 <?= $value->country ?>
-              </td>
+              </td> -->
               <td>
                 <?= $value->phone_number ?>
               </td>
@@ -76,28 +76,32 @@ $orders = $app->SelectAll("SELECT * from orders");
                 <?= $value->total_prix ?> DH
               </td>
               <td>
-              <button onclick="Action('update',<?=$value->id?>)"  class="btn <?php 
-             if($value->status=="Pending"){echo "btn-warning";}else{echo "btn-success";}  ?> text-white">
-              <?= $value->status ?>
-                </button> 
+                <button id="order<?= $value->id ?>"  onclick="update(<?= $value->id ?>)" class=" btn <?php
+                if ($value->status == "Pending") {
+                  echo "btn-warning";
+                } else {
+                  echo "btn-success";
+                } ?> text-white">
+                  <?= $value->status ?>
+                </button>
               </td>
               <td>
-                <button  onclick="Action('delete',<?=$value->id?>)" class="btn btn-outline-danger text-white">
-                  <img src="<?php echo APPURL ?>/img/delete.png" /> 
-                </button>        
+                <button onclick="deleteOrder(<?= $value->id ?>)" class="btn btn-outline-danger text-white">
+                  <img src="<?php echo APPURL ?>/img/delete.png" />
+                </button>
               </td>
-             
+
 
             </tr>
           <?php endforeach; ?>
         </tbody>
         <tfoot>
-        <tr>
+          <tr>
             <th>ID </th>
             <th>Name</th>
             <th>E-mail</th>
-            <th>Town</th>
-            <th>Country </th>
+            <!-- <th>Town</th> -->
+            <!-- <th>Country </th> -->
             <th>Phone</th>
             <th>Address</th>
             <th>Prix</th>
@@ -112,50 +116,61 @@ $orders = $app->SelectAll("SELECT * from orders");
 
 </div>
 <script>
-  function update(type,id) {
-          $.ajax({
-            method: "post",
-            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
-            data:{type:type,id:id},
-            // success: function () {  },
-            error: function (xhr, status, error) {
-              alert(error);
-            },
-          });
-        };
-        function delete(type,id) {
-          $.ajax({
-            method: "post",
-            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
-            data:{type:type,id:id},
-            // success: function () {  },
-            error: function (xhr, status, error) {
-              alert(error);
-            },
-          });
-        };
+  function update(id) {
+    $.ajax({
+      method: "post",
+      // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
+      data: { type: "update", id: id },
+      success: function () { 
+        alert('update status order successfully');
+        //  $("#order"+id).css("background-color","green")
+        $("#order"+id).toggleClass('btn-warning btn-success');
+         $("#order"+id).html("Confirmed");
+        //  $("#order"+id).html().replace('Pending','Confirmed');
+
+       },
+      error: function (xhr, status, error) {
+        alert(error);
+      },
+    });
+  };
+  function deleteOrder (id) {
+    $.ajax({
+      method: "post",
+      // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
+      data: { type: "delete", id: id },
+      success: function () {
+        alert('delete order successfully');
+        $("#" + id).css("display","none")
+      },
+      error: function (xhr, status, error) {
+        alert(error);
+      },
+    });
+  };
 </script>
 <?php
 
 if (isset($_POST['type'])) {
   $id = htmlspecialchars($_POST["id"]);
-  if($_POST['type']=="update"){
-    $order=$app->SelectOne("select * from orders where id='$id'");
-    if($order->status=="Pending"){
-      $status="Confirmed";
-    }else{
-      $status="Pending";
+  if ($_POST['type'] == "update") {
+    $order = $app->SelectOne("select * from orders where id='$id'");
+    if ($order->status == "Pending") {
+      $status = "Confirmed";
+    } else {
+      $status = "Pending";
     }
-    $query="UPDATE orders set status=? where id=?";
-    $arr = [$status,$id];
+    $query = "UPDATE orders set status=? where id=?";
+    $arr = [$status, $id];
     $message = "Update Order successfully";
-    $path = "ListAdmin.php";
+    $path = "ShowOrders.php";
     $app->Update($query, $arr, $path, $message);
-  }else if($_POST['type']=="delete"){
-    $query="DELETE from orders  where id='$id'";
+
+  } else if ($_POST['type'] == "delete") {
+    $query = "DELETE from orders  where id='$id'";
     $message = "Delete Order successfully";
-    $path = "ListAdmin.php";
-    $app->Delete($query, $path,$message);
+    $path = "ShowOrders.php";
+    $app->Delete($query, $path, $message);
   }
 }
 include_once('layout/footer.php'); ?>
