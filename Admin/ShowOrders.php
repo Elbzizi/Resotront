@@ -112,14 +112,23 @@ $orders = $app->SelectAll("SELECT * from orders");
 
 </div>
 <script>
-  function Action(type,id) {
+  function update(type,id) {
           $.ajax({
             method: "post",
             // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
             data:{type:type,id:id},
-            success: function () {
-              alert(Update status successfully);
+            // success: function () {  },
+            error: function (xhr, status, error) {
+              alert(error);
             },
+          });
+        };
+        function delete(type,id) {
+          $.ajax({
+            method: "post",
+            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
+            data:{type:type,id:id},
+            // success: function () {  },
             error: function (xhr, status, error) {
               alert(error);
             },
@@ -143,11 +152,10 @@ if (isset($_POST['type'])) {
     $path = "ListAdmin.php";
     $app->Update($query, $arr, $path, $message);
   }else if($_POST['type']=="delete"){
-    $query="DELETE from orders  where id=?";
-    $arr = [$id];
-    $message = "DELETE Order successfully";
+    $query="DELETE from orders  where id='$id'";
+    $message = "Delete Order successfully";
     $path = "ListAdmin.php";
-    $app->Update($query, $arr, $path, $message);
+    $app->Delete($query, $path,$message);
   }
 }
 include_once('layout/footer.php'); ?>
