@@ -3,6 +3,15 @@ $title = "Admin | Dashboard";
 include_once("layout/header.php");
 $listorders = "bg-orange";
 $orders = $app->SelectAll("SELECT * from orders");
+//pour lec status Pending en haut et les Confirmed en bas
+// $orders = $app->SelectAll("SELECT * FROM orders
+// ORDER BY 
+//     CASE 
+//         WHEN status = 'Pending' THEN 1
+//         WHEN status = 'Confirmed' THEN 2
+//     END;");
+
+
 
 ?>
 <!-- Main Sidebar Container -->

@@ -62,12 +62,18 @@ define("APPURL", "http://localhost/restoran");
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="<?= APPURL ?>" class="nav-item nav-link active">Home</a>
                         <a href="<?= APPURL.'/about.php' ?>" class="nav-item nav-link">About</a>
-                        <a href="<?= APPURL.'/service.php' ?>" class="nav-item nav-link">Service</a>
-                        <a href=" <?= APPURL.'/menu.php' ?>" class="nav-item nav-link">Menu</a>
-                        <a href="<?= APPURL.'/contact.php' ?>" class="nav-item nav-link">Contact</a>
+                        <a href="<?= APPURL.'/service.php' ?>" class="nav-item nav-link">
+                        Service</a>
+                        <a href=" <?= APPURL.'/menu.php' ?>" class="nav-item nav-link">
+                        <i class="fa fa-utensils me-1"></i>Menu</a>
+                        <a href="<?= APPURL.'/contact.php' ?>" class="nav-item nav-link">
+                        <i class="fa fa-envelope-open me-1" aria-hidden="true"></i>Contact</a>
                         <?php if (isset($_SESSION['username'])): ?>
+    
                             <a href="<?php echo APPURL.' /food/cart.php' ?>" class="nav-item nav-link"><i
-                                    class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
+                                    class="fa-sharp fa-solid fa-cart-shopping"></i>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Cart</a>
                                     <a href="<?php echo APPURL?>/booking.php" class="nav-item nav-link"><i
                                     class="fa-sharp fa-solid fa-cart-shopping"></i>Booking</a>
                             <li class="nav-item dropdown">
