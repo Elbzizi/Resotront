@@ -8,6 +8,7 @@ email varchar(150) not null,
 password varchar(100) not null,
 create_at timestamp not null default current_timestamp()
 );
+alter table users add column is_admin boolean default false ; 
 CREATE TABLE `foods` (
   `id` int(10) NOT NULL primary key auto_increment,
   `name` varchar(200) NOT NULL,

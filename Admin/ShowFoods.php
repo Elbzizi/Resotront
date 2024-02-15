@@ -55,7 +55,7 @@ $foods = $app->SelectAll("SELECT * from foods");
                 <?= $value->name ?>
               </td>
               <td>
-                <img src="<?php echo APPURL. "^/img/" .$value->image ?>" alt="">
+                <img src="<?php echo APPURL."img/" .$value->image ?>" width="100px" alt="">
               </td>
               <td>
                 <?= $value->description ?>
