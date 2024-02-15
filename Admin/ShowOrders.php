@@ -126,17 +126,19 @@ $orders = $app->SelectAll("SELECT * from orders");
 </div>
 <script>
   function update(id) {
+  var order= $("#order"+id);
     $.ajax({
       method: "post",
-      // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
       data: { type: "update", id: id },
       success: function () { 
         alert('update status order successfully');
-        //  $("#order"+id).css("background-color","green")
-        $("#order"+id).toggleClass('btn-warning btn-success');
-         $("#order"+id).html("Confirmed");
-        //  $("#order"+id).html().replace('Pending','Confirmed');
-
+      
+      order.toggleClass('btn-warning btn-success');
+      if (order.html() == "Confirmé") {
+        order.html("Pending");
+      } else {
+        order.html("Confirmé"); 
+      }
        },
       error: function (xhr, status, error) {
         alert(error);
@@ -146,7 +148,6 @@ $orders = $app->SelectAll("SELECT * from orders");
   function deleteOrder (id) {
     $.ajax({
       method: "post",
-      // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
       data: { type: "delete", id: id },
       success: function () {
         alert('delete order successfully');
