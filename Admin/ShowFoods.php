@@ -1,8 +1,9 @@
 <?php
 $title = "Admin | Dashboard";
 include_once("layout/header.php");
-$listorders = "bg-orange";
-$orders = $app->SelectAll("SELECT * from orders");
+$listfoods = "bg-orange";
+$orders = $app->SelectAll("SELECT * from foods");
+
 ?>
 <!-- Main Sidebar Container -->
 <?php require_once('layout/sidebar.php') ?>
@@ -26,7 +27,7 @@ $orders = $app->SelectAll("SELECT * from orders");
       </div>
     <?php } ?>
     <div class="card-header">
-      <h3 class="card-title">List of Admins</h3>
+      <h3 class="card-title">List of Foods</h3>
     </div>
 
     <!-- /.card-header -->
