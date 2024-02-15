@@ -103,7 +103,7 @@
             </a>
           </li>
           <li class="nav-item <?= $listfoods ?>">
-            <a href="<?=APPADM?>/ShowOrders.php" class="nav-link">
+            <a href="<?=APPADM?>/ShowFoods.php" class="nav-link">
             <i class="fa fa-utensils "></i>
               <p>
                 Liste Foods

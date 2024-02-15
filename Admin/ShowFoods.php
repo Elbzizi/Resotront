@@ -2,7 +2,7 @@
 $title = "Admin | Dashboard";
 include_once("layout/header.php");
 $listfoods = "bg-orange";
-$orders = $app->SelectAll("SELECT * from foods");
+$foods = $app->SelectAll("SELECT * from foods");
 
 ?>
 <!-- Main Sidebar Container -->
@@ -37,18 +37,16 @@ $orders = $app->SelectAll("SELECT * from foods");
           <tr>
             <th>ID </th>
             <th>Name</th>
-            <th>E-mail</th>
-            <!-- <th>Town</th>
-            <th>Country </th> -->
-            <th>Phone</th>
-            <th>Address</th>
+            <th>Image</th>
+            <th>description</th>
             <th>Prix</th>
-            <th>status</th>
+            <th>meal_id</th>
+            <th>created_at</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($orders as $value): ?>
+          <?php foreach ($foods as $value): ?>
             <tr id="<?= $value->id ?>">
               <td>
                 <?= $value->id ?>
@@ -57,33 +55,31 @@ $orders = $app->SelectAll("SELECT * from foods");
                 <?= $value->name ?>
               </td>
               <td>
-                <?= $value->email ?>
+                <img src="<?php echo APPURL. "^/img/" .$value->image ?>" alt="">
+              </td>
+              <td>
+                <?= $value->description ?>
+              </td>
+               <td>
+                <?= $value->prix ?> DH
+              </td>
+              <td>
+                <?= $value->meal_id ?>
+              </td>
+             
+              <td>
+                <?= $value->created_at ?>
               </td>
               <!-- <td>
-                <?= $value->town ?>
-              </td>
-              <td>
-                <?= $value->country ?>
-              </td> -->
-              <td>
-                <?= $value->phone_number ?>
-              </td>
-              <td>
-                <?= $value->address ?>
-              </td>
-              <td>
-                <?= $value->total_prix ?> DH
-              </td>
-              <td>
-                <button id="order<?= $value->id ?>"  onclick="update(<?= $value->id ?>)" class=" btn <?php
-                if ($value->status == "Pending") {
-                  echo "btn-warning";
-                } else {
-                  echo "btn-success";
-                } ?> text-white">
+                <button id="order<?= $value->id ?>" onclick="update(<?= $value->id ?>)" class=" btn <?php
+                    if ($value->status == "Pending") {
+                      echo "btn-warning";
+                    } else {
+                      echo "btn-success";
+                    } ?> text-white">
                   <?= $value->status ?>
                 </button>
-              </td>
+              </td> -->
               <td>
                 <button onclick="deleteOrder(<?= $value->id ?>)" class="btn btn-outline-danger text-white">
                   <img src="<?php echo APPURL ?>/img/delete.png" />
@@ -98,13 +94,11 @@ $orders = $app->SelectAll("SELECT * from foods");
           <tr>
             <th>ID </th>
             <th>Name</th>
-            <th>E-mail</th>
-            <!-- <th>Town</th> -->
-            <!-- <th>Country </th> -->
-            <th>Phone</th>
-            <th>Address</th>
+            <th>Image</th>
+            <th>description</th>
             <th>Prix</th>
-            <th>status</th>
+            <th>meal_id</th>
+            <th>created_at</th>
             <th>Delete</th>
           </tr>
         </tfoot>
@@ -116,32 +110,32 @@ $orders = $app->SelectAll("SELECT * from foods");
 </div>
 <script>
   function update(id) {
-  var order= $("#order"+id);
+    var order = $("#order" + id);
     $.ajax({
       method: "post",
       data: { type: "update", id: id },
-      success: function () { 
+      success: function () {
         alert('update status order successfully');
-      
-      order.toggleClass('btn-warning btn-success');
-      if (order.html() == "Confirmé") {
-        order.html("Pending");
-      } else {
-        order.html("Confirmé"); 
-      }
-       },
+
+        order.toggleClass('btn-warning btn-success');
+        if (order.html() == "Confirmé") {
+          order.html("Pending");
+        } else {
+          order.html("Confirmé");
+        }
+      },
       error: function (xhr, status, error) {
         alert(error);
       },
     });
   };
-  function deleteOrder (id) {
+  function deleteOrder(id) {
     $.ajax({
       method: "post",
       data: { type: "delete", id: id },
       success: function () {
         alert('delete order successfully');
-        $("#" + id).css("display","none")
+        $("#" + id).css("display", "none")
       },
       error: function (xhr, status, error) {
         alert(error);
