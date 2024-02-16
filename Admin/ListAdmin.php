@@ -15,16 +15,6 @@ $admins = $app->SelectAll("SELECT * from users where is_Admin = 1");
     .card-body {
       font-size: 20px;
     }
-
-    .divM {
-      position: relative;
-    }
-
-    .bM {
-      position: absolute;
-      top: -9px;
-      right: 10px;
-    }
   </style>
   <div class="card">
     <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])) { ?>
