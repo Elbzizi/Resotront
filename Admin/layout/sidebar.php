@@ -102,6 +102,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item <?= $listfoods ?>">
+            <a href="<?=APPADM?>/ShowFoods.php" class="nav-link">
+            <i class="fa fa-utensils "></i>
+              <p>
+                Liste Foods
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="<?=APPURL?>/Auth/logout.php" class="nav-link">
               <!-- <i class="nav-icon fas fa-th"></i> -->

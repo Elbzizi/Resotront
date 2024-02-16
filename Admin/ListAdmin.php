@@ -9,22 +9,11 @@ $admins = $app->SelectAll("SELECT * from users where is_Admin = 1");
 <?php require_once('layout/sidebar.php') ?>
 
 <!-- Content Wrapper. Contains page content -->
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- start ================ -->
   <style>
     .card-body {
       font-size: 20px;
-    }
-
-    .divM {
-      position: relative;
-    }
-
-    .bM {
-      position: absolute;
-      top: -9px;
-      right: 10px;
     }
   </style>
   <div class="card">
@@ -136,7 +125,6 @@ function Ajoter() {
         }
           $.ajax({
             method: "post",
-            // url: "auth.php", //url pour envoyer les donnes ,par defau cerrunet page
             data: data,
             success: function () {
               alert("Add Admin Sccussefully");
