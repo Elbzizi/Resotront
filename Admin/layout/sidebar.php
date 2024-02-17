@@ -95,14 +95,6 @@
             </p>
           </a>
         </li>
-        <li class="nav-item <?= $listUsers ?>">
-          <a href="<?= APPADM ?>/ListUsers.php" class="nav-link">
-          <i class="nav-icon fa fa-address-book" aria-hidden="true"></i>
-            <p>
-              Liste Users
-            </p>
-          </a>
-        </li>
         <li class="nav-item <?= $listorders ?>">
           <a href="<?= APPADM ?>/ShowOrders.php" class="nav-link">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -114,7 +106,7 @@
         </li>
         <li class="nav-item <?= $listfoods ?>">
           <a href="<?= APPADM ?>/ShowFoods.php" class="nav-link">
-            <i class="nav-icon fa fa-utensils "></i>
+            <i class="fa fa-utensils "></i>
             <p>
               Liste Foods
             </p>
