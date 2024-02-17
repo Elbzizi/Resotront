@@ -79,7 +79,7 @@ CREATE TABLE `bookings` (
   `date_booking` varchar(200) NOT NULL,
   `num_people` int(10) NOT NULL,
   `special_request` text NOT NULL,
-  `status` varchar(200) NOT NULL,
+  `status` varchar(200) NOT NULL default 'Pending',
   `user_id` int(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

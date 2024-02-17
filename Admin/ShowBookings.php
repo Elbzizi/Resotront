@@ -37,16 +37,16 @@ $bookings = $app->SelectAll("SELECT * from bookings");
 
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped text-center">
         <thead>
           <tr>
-            <th>ID </th>
+          <th>ID </th>
             <th>Name</th>
             <th>E-mail</th>
             <th>date_booking</th>
             <th>num_people</th>
-            <th>special_request</th>
-            <th>user_id</th>
+            <!-- <th>special_request</th>
+            <th>user_id</th> -->
             <th>created_at</th>
             <th>status</th>
             <th>Delete</th>
@@ -61,9 +61,6 @@ $bookings = $app->SelectAll("SELECT * from bookings");
               <td>
                 <?= $value->name ?>
               </td>
-              <!-- <td>
-                <img src="<?php echo APPURL . "img/" . $value->image ?>" width="100px" alt="">
-              </td> -->
               <td>
                 <?= $value->email ?>
               </td>
@@ -71,16 +68,16 @@ $bookings = $app->SelectAll("SELECT * from bookings");
                 <?= $value->date_booking ?>
               </td>
               <td>
-               <?=$value->num_people?>
+                <?= $value->num_people ?>
               </td>
-              <td>
+              <!-- <td>
                  <?= $value->special_request ?> 
-              </td>
-              <td>
+              </td> -->
+              <!-- <td>
                  <?= $value->user_id ?> 
-              </td>
+              </td> -->
               <td>
-                 <?= $value->created_at ?> 
+                <?= $value->created_at ?>
               </td>
               <td>
                 <button id="booking<?= $value->id ?>" onclick="update(<?= $value->id ?>)" class=" btn <?php
@@ -104,15 +101,16 @@ $bookings = $app->SelectAll("SELECT * from bookings");
         </tbody>
         <tfoot>
           <tr>
-          <th>ID </th>
+            <th>ID </th>
             <th>Name</th>
             <th>E-mail</th>
             <th>date_booking</th>
             <th>num_people</th>
-            <th>special_request</th>
-            <th>status</th>
-            <th>user_id</th>
+            <!-- <th>special_request</th>
+            <th>user_id</th> -->
             <th>created_at</th>
+            <th>status</th>
+            <th>Delete</th>
           </tr>
         </tfoot>
       </table>
@@ -122,90 +120,36 @@ $bookings = $app->SelectAll("SELECT * from bookings");
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Food</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Name :</label>
-            <input type="text" id="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter name ...">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Description :</label>
-            <textarea id="desc" class="form-control" aria-describedby="emailHelp"
-              placeholder="Enter Description ..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Prix :</label>
-            <input type="text" id="prix" class="form-control" placeholder="Prix">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Image :</label>
-            <input type="file" id="img" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Meals :</label>
-            <select id="meat" class="form-control">
-              <option value="1">Breakfast</option>
-              <option value="2">Lunch</option>
-              <option value="3">Dinner</option>
-            </select>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="Ajoter()" id="save" data-dismiss="modal" class="btn btn-primary">Save </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
-  function Ajoter() {
-    // var data = {
-    //   name: $("#name").val(),
-    //   desc: $("#desc").val(),
-    //   prix: $("#prix").val(),
-    //   img: $("#img").val(),
-    //   meat: $("#meat").val(),
-    //   save: "save"
-    // }
-    var formData = new FormData();
-    formData.append('name', $("#name").val());
-    formData.append('desc', $("#desc").val());
-    formData.append('prix', $("#prix").val());
-    formData.append('img', $("#img")[0].files[0]); // Récupérez le fichier à partir du champ d'entrée de fichier
-    formData.append('meat', $("#meat").val());
-    formData.append('save', 'save');
+ function update(id) {
+  var booking= $("#booking"+id);
     $.ajax({
       method: "post",
-      data: formData,
-      contentType: false,
-      processData: false,
-      success: function () {
-        alert("Add Food Sccussefully");
-      },
+      data: { type: "update", id: id },
+      success: function () { 
+        alert('update status booking successfully');
+      
+      booking.toggleClass('btn-warning btn-success');
+      if (booking.html() == "Confirmé") {
+        booking.html("Pending");
+      } else {
+        booking.html("Confirmé"); 
+      }
+       },
       error: function (xhr, status, error) {
-        alert(error); // le message de error ex:not faund
+        alert(error);
       },
     });
   };
-  function deleteFood (id,img) {
+ 
+  function deleteBooking(id) {
     $.ajax({
       method: "post",
-      data: { delete: "delete", id: id,img:img },
+      data: { type: "delete", id: id, },
       success: function () {
-        alert('delete Foods successfully');
-        $("#" + id).css("display","none")
+        alert('delete Booking successfully');
+        $("#" + id).css("display", "none")
       },
       error: function (xhr, status, error) {
         alert(error);
@@ -214,32 +158,29 @@ $bookings = $app->SelectAll("SELECT * from bookings");
   };
 </script>
 <?php
+if (isset($_POST['type'])) {
+  $id = htmlspecialchars($_POST["id"]);
+  if ($_POST['type'] == "update") {
+    $booking = $app->SelectOne("select * from bookings where id='$id'");
+    if ($booking->status == "Pending") {
+      $status = "Confirmed";
+    } else {
+      $status = "Pending";
+    }
+    $query = "UPDATE bookings set status=? where id=?";
+    $arr = [$status, $id];
+    $message = "Update bookings successfully";
+    $path = "ShowBookings.php";
+    $app->Update($query, $arr, $path, $message);
 
-if (isset($_POST['save'])) {
-  $name = htmlspecialchars($_POST["name"]);
-  $desc = htmlspecialchars($_POST["desc"]);
-  $prix = htmlspecialchars($_POST["prix"]);
-  $img = $_FILES["img"]["name"];
-  $dir = "Foods-Image/" . basename($img);
-  $meat = htmlspecialchars($_POST["meat"]);
-  $query = 'INSERT INTO foods  values (default,?,?,?,?,?,default)';
-  $arr = [$name, $img, $desc, $prix, $meat];
-  $message = "create Food successfully";
-  $path = "ShowFoods.php";
-  if (move_uploaded_file($_FILES["img"]["tmp_name"], $dir)) {
-    $app->Insert($query, $arr, $path, $message);
-  }
-  echo "Insert Food successfully";
-}
-if(isset($_POST['delete'])){
-  $id=$_POST['id'];
-  $img=$_POST["img"];
-  $query = "DELETE from foods  where id='$id'";
-  $message = "Delete Food successfully";
-  $path = "ShowFoods.php";
-  unlink("Foods-image/".$img);
+  } else if ($_POST['type'] == "delete") {
+    $query = "DELETE from bookings  where id='$id'";
+  $message = "Delete Booking successfully";
+  $path = "ShowBookings.php";
   $app->Delete($query, $path, $message);
+  }
 }
+
 
 
 include_once('layout/footer.php'); ?>
