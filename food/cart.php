@@ -71,8 +71,8 @@ if(isset($_POST["submit"])){
                           </tr>
                           <?php endforeach ;?>
                         <?php  else : ?>
-                          <p class="bg-warning text-center p-3">il n'y a pas de plats vous devez ajouter des plats !!!
-                            <strong><a class="text-white p-1" href="<?=APPURL.'/menu.php'?>">Menu click ici</a></strong>
+                          <p class="bg-warning text-center p-3">there are no dishes you need to add dishes !!!
+                            <strong><a class="text-white p-1" href="<?=APPURL.'/menu.php'?>">Menu cliquez ici</a></strong>
                           </p>
                           <?php endif ?>
                         </tbody>
