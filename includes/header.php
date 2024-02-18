@@ -2,6 +2,7 @@
 $app = new App();
 $app->startingSession();
 define("APPURL", "http://localhost/restoran");
+define("IMAG", "http://localhost/restoran/Admin/Foods-Image/");
 ?>
 
 <head>
@@ -39,12 +40,12 @@ define("APPURL", "http://localhost/restoran");
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
+        <!-- <div id="spinner"
             class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> -->
         <!-- Spinner End -->
 
 
@@ -62,8 +63,6 @@ define("APPURL", "http://localhost/restoran");
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="<?= APPURL ?>" class="nav-item nav-link active">Home</a>
                         <a href="<?= APPURL.'/about.php' ?>" class="nav-item nav-link">About</a>
-                        <a href="<?= APPURL.'/service.php' ?>" class="nav-item nav-link">
-                        Service</a>
                         <a href=" <?= APPURL.'/menu.php' ?>" class="nav-item nav-link">
                         <i class="fa fa-utensils me-1"></i>Menu</a>
                         <a href="<?= APPURL.'/contact.php' ?>" class="nav-item nav-link">

@@ -189,7 +189,7 @@ $reviews = $app->SelectAll($review);
                         <?php foreach ($meal_1 as $meal): ?>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="<?php echo 'img/' . $meal->image ?>"
+                                    <img class="flex-shrink-0 img-fluid rounded" src="<?= IMAG. $meal->image ?>"
                                         alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
@@ -216,7 +216,7 @@ $reviews = $app->SelectAll($review);
                         <?php foreach ($meal_2 as $meal): ?>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="<?php echo 'img/' . $meal->image ?>"
+                                    <img class="flex-shrink-0 img-fluid rounded" src="<?= IMAG. $meal->image ?>"
                                         alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
@@ -243,7 +243,7 @@ $reviews = $app->SelectAll($review);
                         <?php foreach ($meal_3 as $meal): ?>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="<?php echo 'img/' . $meal->image ?>"
+                                    <img class="flex-shrink-0 img-fluid rounded" src="<?= IMAG. $meal->image ?>"
                                         alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
