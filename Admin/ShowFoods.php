@@ -155,6 +155,7 @@ $foods = $app->SelectAll("SELECT * from foods");
           <div class="form-group">
             <label for="exampleInputPassword1">Image :</label>
             <input type="file" id="img" class="form-control">
+            <div id="isImg"></div>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Meals :</label>
