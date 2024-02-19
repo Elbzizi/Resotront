@@ -77,10 +77,15 @@ $app->Insert($query,$arry,$path,$message);
                            <input type="hidden" name="image" value="<?=$taba9->image?>">
                            <input type="hidden" name="prix" value="<?=$taba9->prix?>">
                            <input type="hidden" name="item_id" value="<?=$taba9->id?>">
-                        <?php   if($count > 0) :  ?>
+                <?php   if(isset($_SESSION["user_id"])):
+                 if($count > 0) :  ?>
                            <input type="submit" disabled name="submit" class="btn btn-danger py-3 px-5 mt-2" value="déja exist">
                            <?php  else :?>
                             <input type="submit"  name="submit" class="btn btn-primary py-3 px-5 mt-2" value="Add to Cart">
+                            <?php endif;
+                            else : ?>
+                            <div class="bg-wrning text-black  w-50">In order to order you must log in</div>
+                            <a href="<?=APPURL.'/Auth/login.php'?>" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">Login</a>
                             <?php endif ?>
                         </form>
                     </div>
