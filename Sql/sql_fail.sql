@@ -111,8 +111,15 @@ INSERT INTO `reviews` (`id`, `review`, `username`, `created_at`) VALUES
 (2, ' outsourcing. Progressively iterate B2C communities and top-line content. ', 'Mohamed Hassan', '2023-04-09 14:09:46'),
 (3, '', 'Mohamed123', '2023-04-11 10:49:50');
 
-
-
+CREATE  TABLE `Contacte` (
+  `id` int(10) NOT NULL primary Key auto_increment,
+  `username` varchar(200) NOT NULL,
+   `email` varchar(200) NOT NULL,
+  `subject` varchar(200) NOT NULL,
+  `message` varchar(200)  NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*===============================================================================================
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
