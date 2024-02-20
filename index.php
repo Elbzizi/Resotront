@@ -45,7 +45,7 @@ $reviews = $app->SelectAll($review);
                 </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        <?php } ?>
+        <?php unset($_SESSION["message"]); } ?>
         <div class="row g-4">
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item rounded pt-3">
