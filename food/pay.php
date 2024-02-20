@@ -33,7 +33,7 @@ require "../includes/header.php";?>
                 </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        <?php } ?>
+            <?php unset($_SESSION["message"]); } ?>
                     <!-- Replace "test" with your own sandbox Business account app client ID -->
                     <script src="https://www.paypal.com/sdk/js?client-id=Aexh9I8Rq-2NkKh6T7BPSi4tdyxVIOnAT_A8kOp-VdVxfU3Cs0WBlBFa-pJgICVTngyex-J2p6nLd95j&currency=USD"></script>
                     <!-- Set up a container element for the button -->

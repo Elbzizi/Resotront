@@ -24,7 +24,7 @@ $orders = $app->SelectAll("SELECT * from orders");
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </div>
-    <?php } ?>
+      <?php unset($_SESSION["message"]); } ?>
     <div class="card-header">
       <h3 class="card-title">List of Admins</h3>
     </div>
