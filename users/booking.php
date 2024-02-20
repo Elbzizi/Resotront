@@ -36,7 +36,7 @@ $bookings=$app->SelectAll($query);
                 </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        <?php } ?>
+            <?php unset($_SESSION["message"]); } ?>
                 <div class="col-md-12">
                     <table class="table table-striped p-2" >
                         <thead>
