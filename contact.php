@@ -81,7 +81,8 @@ require "includes/header.php";
                                         <?php if(isset($_SESSION['user_id'])): ?>
                                         <button class="btn btn-primary w-100 py-3" name="send" type="submit">Send Message</button>
                                         <?php  else : ?>
-                                            <a href="<?= APPURL ?>/contact.php" class="btn btn-primary w-100 py-3"  >Send Message</a>
+                                            <p>Contact us you must log in</p>
+                                            <a href="<?= APPURL ?>/Auth/login.php" class="btn btn-primary w-100 py-3"  >log in</a>
                                     <?php endif ?>
                                     </div>
                                 </div>
