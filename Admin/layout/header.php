@@ -59,6 +59,7 @@ $contactes=$app->SelectAll($query1);
   <link rel="stylesheet" href="<?= APPADM ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- jQuery -->
 <script src="<?= APPADM ?>assets/plugins/jquery/jquery.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
