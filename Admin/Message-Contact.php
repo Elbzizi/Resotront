@@ -44,6 +44,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
             <th>Message</th>
             <th>Creation Date</th>
             <th>Delete</th>
+            <th>Answer</th>
           </tr>
         </thead>
         <tbody>
@@ -72,6 +73,11 @@ $messages = $app->SelectAll("SELECT * from Contacte");
                   <img src="<?php echo APPURL ?>/img/delete.png" />
                 </button>
               </td>
+              <td>
+                <button data-toggle="modal" data-target="#exampleModal" onclick="('<?= $value->id ?>')" class="btn btn-success text-white">
+                <i class="nav-icon fas fa-envelope "></i>
+                </button>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -85,6 +91,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
             <th>Message</th>
             <th>Creation Date</th>
             <th>Delete</th>
+            <th>Answer</th>
           </tr>
           </tr>
         </tfoot>
@@ -94,7 +101,42 @@ $messages = $app->SelectAll("SELECT * from Contacte");
   </div>
 
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Full Name :</label>
+            <input type="text" id="username" class="form-control"  aria-describedby="emailHelp"
+              placeholder="Enter full name ...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">E-mail address</label>
+            <input type="email" id="email" class="form-control"  aria-describedby="emailHelp"
+              placeholder="Enter email ...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" id="password" class="form-control" 
+              placeholder="Password">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="Ajoter()" id="save" data-dismiss="modal"  class="btn btn-primary">Save </button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   function deleteMessage(id) {
     $.ajax({

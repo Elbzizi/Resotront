@@ -103,10 +103,10 @@ if(isset($_POST['send'])){
         echo "<script>alert('Tout les chomps est obligatoire !!')</script>";
         echo "<script>window.location.href='" . APPURL . "</script>";
     } else {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $message = $_POST['message'];
-        $subject = $_POST['subject'];
+        $name = filter_var($_POST['name'],FILTER_SANITIZE_STRING) ;
+        $email  = filter_var($_POST['email '],FILTER_SANITIZE_EMAIL) ;
+        $message = filter_var($_POST['message'],FILTER_SANITIZE_STRING) ;
+        $subject = filter_var($_POST['subject'],FILTER_SANITIZE_STRING) ;
         $user_id = $_SESSION['user_id'];
         $query="INSERT INTO Contacte values (default,?,?,?,?,?,default)";
         $arry=[$name,$email,$subject,$message,$user_id];
