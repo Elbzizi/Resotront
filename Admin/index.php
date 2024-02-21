@@ -7,6 +7,12 @@ $nborder=$app->SelectOne("SELECT count(*) as num from orders");
 $nbusers=$app->SelectOne("SELECT count(*) as num from users where is_admin=false");
 $booking=$app->SelectOne("SELECT count(*) as num from bookings ");
 // table2=
+$nbBreakfast=$app->SelectOne("SELECT count(*) as num from foods where meal_id=1");
+$Breakfast=ceil(($nbBreakfast->num/$nbfood->num)*100);
+$nbLaunch=$app->SelectOne("SELECT count(*) as num from foods where meal_id=2");
+$Launch=ceil(($nbLaunch->num/$nbfood->num)*100);
+$nbDinner=$app->SelectOne("SELECT count(*) as num from foods where meal_id=3");
+$Dinner=ceil(($nbDinner->num/$nbfood->num)*100);
 
 ?>
   <!-- Main Sidebar Container -->
@@ -87,7 +93,7 @@ $booking=$app->SelectOne("SELECT count(*) as num from bookings ");
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Task</th>
+                      <th>Meals</th>
                       <th>Progress</th>
                       <th style="width: 40px">Label</th>
                     </tr>
@@ -95,43 +101,33 @@ $booking=$app->SelectOne("SELECT count(*) as num from bookings ");
                   <tbody>
                     <tr>
                       <td>1.</td>
-                      <td>Update software</td>
+                      <td>Breakfast</td>
                       <td>
                         <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                          <div class="progress-bar progress-bar-danger" style="width: <?= $Breakfast ?>%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-danger">55%</span></td>
+                      <td><span class="badge bg-danger"><?= $Breakfast ?>%</span></td>
                     </tr>
                     <tr>
                       <td>2.</td>
-                      <td>Clean database</td>
+                      <td>Launch</td>
                       <td>
                         <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" style="width: 70%"></div>
+                          <div class="progress-bar bg-warning" style="width: <?=$Launch?>%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-warning">70%</span></td>
+                      <td><span class="badge bg-warning"><?=$Launch?>%</span></td>
                     </tr>
                     <tr>
                       <td>3.</td>
-                      <td>Cron job running</td>
+                      <td>Dinner</td>
                       <td>
                         <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-primary" style="width: 30%"></div>
+                          <div class="progress-bar bg-success" style="width: <?=$Dinner?>%"></div>
                         </div>
                       </td>
-                      <td><span class="badge bg-primary">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-success">90%</span></td>
+                      <td><span class="badge bg-success"><?=$Dinner?>%</span></td>
                     </tr>
                   </tbody>
                 </table>
