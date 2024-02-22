@@ -104,7 +104,7 @@ if(isset($_POST['send'])){
         echo "<script>window.location.href='" . APPURL . "</script>";
     } else {
         $name = filter_var($_POST['name'],FILTER_SANITIZE_STRING) ;
-        $email  = filter_var($_POST['email '],FILTER_SANITIZE_EMAIL) ;
+        $email  = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL) ;
         $message = filter_var($_POST['message'],FILTER_SANITIZE_STRING) ;
         $subject = filter_var($_POST['subject'],FILTER_SANITIZE_STRING) ;
         $user_id = $_SESSION['user_id'];
