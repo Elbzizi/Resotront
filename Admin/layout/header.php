@@ -8,12 +8,17 @@ $app->startingSession();
 
  $app->validateAdmin();
  //number message
-$count1 = "SELECT COUNT(*) AS numberC FROM Contacte";
+// $count1 = "SELECT COUNT(*) AS numberC FROM Contacte where created_at=NOW()";
+$count1 = "SELECT COUNT(*) AS numberC FROM Contacte WHERE DATE(created_at) = CURDATE()";
 $countM=$app->SelectOne($count1);
 $num=$countM->numberC;
 // les message;
-$query1 = "SELECT * FROM Contacte ORDER BY created_at LIMIT 3" ;
+$query1 = "SELECT * FROM Contacte where DATE(created_at) = CURDATE() ORDER BY created_at LIMIT 3" ;
 $contactes=$app->SelectAll($query1);
+// les message no reponde
+
+$norpo=$app->SelectOne("SELECT COUNT(*) AS num FROM Contacte where status='Pending'");
+$noconf=$app->SelectOne("SELECT COUNT(*) AS num FROM orders where status='Pending'");
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,28 +155,21 @@ $contactes=$app->SelectAll($query1);
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge"><?= $noconf->num + $norpo->num  ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header"><?= $noconf->num + $norpo->num  ?> Notifications</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+          <a href="<?= APPADM ?>/Message-Contact.php" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> <?=  $norpo->num  ?> new messages no response
+            <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+          <a href="<?= APPADM ?>/ShowBookings.php" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> <?= $noconf->num?> Orders not confirmed
+            <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
+          
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
