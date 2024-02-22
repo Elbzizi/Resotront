@@ -118,8 +118,11 @@ CREATE  TABLE `Contacte` (
   `subject` varchar(200) NOT NULL,
   `message` varchar(200)  NOT NULL,
   `user_id` int(10) NOT NULL,
+  `status` varchar(50) not null default 'Pending'
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+alter table contacte add column status varchar(50) default "Pending";
+
 /*===============================================================================================
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,

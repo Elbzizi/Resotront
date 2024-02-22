@@ -108,7 +108,7 @@ if(isset($_POST['send'])){
         $message = filter_var($_POST['message'],FILTER_SANITIZE_STRING) ;
         $subject = filter_var($_POST['subject'],FILTER_SANITIZE_STRING) ;
         $user_id = $_SESSION['user_id'];
-        $query="INSERT INTO Contacte values (default,?,?,?,?,?,default)";
+        $query="INSERT INTO Contacte values (default,?,?,?,?,?,default,default)";
         $arry=[$name,$email,$subject,$message,$user_id];
         $path="index.php";
         $message="send email successfully";
