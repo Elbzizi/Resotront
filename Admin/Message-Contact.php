@@ -74,7 +74,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
                 </button>
               </td>
               <td>
-                <button data-toggle="modal" data-target="#exampleModal" onclick="('<?= $value->id ?>')" class="btn btn-success text-white">
+                <button data-toggle="modal" data-target="#exampleModal" onclick="getData('<?= $value->id ?>')" class="btn btn-success text-white">
                 <i class="nav-icon fas fa-envelope "></i>
                 </button>
               </td>
@@ -107,7 +107,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Repond E-mail</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -115,24 +115,37 @@ $messages = $app->SelectAll("SELECT * from Contacte");
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">Full Name :</label>
-            <input type="text" id="username" class="form-control"  aria-describedby="emailHelp"
+            <label for="exampleInputEmail1">User name :</label>
+            <input type="text" id="username" value="<?= $_SESSION['username'] ?>" class="form-control"  aria-describedby="emailHelp"
               placeholder="Enter full name ...">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">E-mail address</label>
-            <input type="email" id="email" class="form-control"  aria-describedby="emailHelp"
+            <input type="email" id="emailM" class="form-control"  aria-describedby="emailHelp"
               placeholder="Enter email ...">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" id="password" class="form-control" 
-              placeholder="Password">
+            <label for="exampleInputEmail1">Subject</label>
+            <input type="email" id="subject" class="form-control"  aria-describedby="emailHelp"
+              placeholder="Enter email ...">
           </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Old Message</label>
+            <textarea type="email" id="oldmessage" class="form-control"  aria-describedby="emailHelp"
+              placeholder="Enter email ...">
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Message Réponde</label>
+            <textarea type="email" id="messageR" class="form-control"  aria-describedby="emailHelp"
+              placeholder="Enter email ...">
+            </textarea>
+          </div>
+         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="Ajoter()" id="save" data-dismiss="modal"  class="btn btn-primary">Save </button>
+        <button type="button" onclick="sendEmail()" id="save" data-dismiss="modal"  class="btn btn-primary">Save </button>
       </div>
     </div>
   </div>
@@ -151,6 +164,25 @@ $messages = $app->SelectAll("SELECT * from Contacte");
       },
     });
   };
+  function getData(id) {
+    $.ajax({
+      method: "get",
+      url:"get_message.php",
+      data: { find: "find", id: id },
+      success: function (res) {
+        var data = JSON.parse(res);
+      $("#emailM").val(data.email);
+      $("#subject").val(data.subject);
+      $("#oldmessage").val(data.message);
+      },
+      error: function (xhr, status, error) {
+        alert(error);
+      },
+    });
+  };
+ function sendEmail(){
+
+  }
 </script>
 <?php
 if (isset($_POST['delete'])) {
@@ -159,5 +191,7 @@ if (isset($_POST['delete'])) {
   $message = "Delete User successfully";
   $path = "Message-Contact.php";
   $app->Delete($query, $path, $message);
-}
+};
+
+
 include_once('layout/footer.php'); ?>
