@@ -74,15 +74,20 @@ $messages = $app->SelectAll("SELECT * from Contacte");
                 </button>
               </td>
               <td>
-                <button data-toggle="modal" data-target="#exampleModal" onclick="getData('<?= $value->id ?>')" class="btn btn-success text-white">
-                <i class="nav-icon fas fa-envelope "></i>
+                <button id="contact<?=$value->id?>" data-toggle="modal"  data-target="#exampleModal" onclick="getData('<?= $value->id ?>')"
+                  class="btn <?php
+                    if ($value->status == "Pending") {
+                      echo "btn-warning";
+                    } else {
+                      echo "btn-success disabled";
+                    } ?> text-white"> 
+                  <i class="nav-icon fas fa-envelope "></i>
                 </button>
               </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
         <tfoot>
-          <tr>
           <tr>
             <th>ID </th>
             <th>User Name</th>
@@ -92,7 +97,6 @@ $messages = $app->SelectAll("SELECT * from Contacte");
             <th>Creation Date</th>
             <th>Delete</th>
             <th>Answer</th>
-          </tr>
           </tr>
         </tfoot>
       </table>
@@ -114,38 +118,45 @@ $messages = $app->SelectAll("SELECT * from Contacte");
       </div>
       <div class="modal-body">
         <form>
+          <input type="hidden" id="idM">
           <div class="form-group">
-            <label for="exampleInputEmail1">User name :</label>
-            <input type="text" id="username" value="<?= $_SESSION['username'] ?>" class="form-control"  aria-describedby="emailHelp"
-              placeholder="Enter full name ...">
+            <label for="exampleInputEmail1">User name Admin :</label>
+            <input type="text" id="usernameM" value="<?= $_SESSION['username'] ?>" class="form-control"
+              aria-describedby="emailHelp" placeholder="Enter full name ...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Header :</label>
+            <input type="text" id="heder" value="<?= $_SESSION['email'] ?>" class="form-control"
+              aria-describedby="emailHelp" placeholder="Enter full name ...">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">E-mail address</label>
-            <input type="email" id="emailM" class="form-control"  aria-describedby="emailHelp"
+            <input type="email" id="emailM" class="form-control" aria-describedby="emailHelp"
               placeholder="Enter email ...">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Subject</label>
-            <input type="email" id="subject" class="form-control"  aria-describedby="emailHelp"
+            <input type="email" id="subject" class="form-control" aria-describedby="emailHelp"
               placeholder="Enter email ...">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Old Message</label>
-            <textarea type="email" id="oldmessage" class="form-control"  aria-describedby="emailHelp"
+            <textarea type="email" id="oldmessage" class="form-control" aria-describedby="emailHelp"
               placeholder="Enter email ...">
             </textarea>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Message Réponde</label>
-            <textarea type="email" id="messageR" class="form-control"  aria-describedby="emailHelp"
+            <textarea type="email" id="messageR" class="form-control" aria-describedby="emailHelp"
               placeholder="Enter email ...">
             </textarea>
           </div>
-         
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="sendEmail()" id="save" data-dismiss="modal"  class="btn btn-primary">Save </button>
+        <button type="button" onclick="sendEmail()" id="save" data-dismiss="modal" class="btn btn-primary">Save
+        </button>
       </div>
     </div>
   </div>
@@ -167,22 +178,44 @@ $messages = $app->SelectAll("SELECT * from Contacte");
   function getData(id) {
     $.ajax({
       method: "get",
-      url:"get_message.php",
+      url: "get_message.php",
       data: { find: "find", id: id },
       success: function (res) {
         var data = JSON.parse(res);
-      $("#emailM").val(data.email);
-      $("#subject").val(data.subject);
-      $("#oldmessage").val(data.message);
+        $("#emailM").val(data.email);
+        $("#subject").val(data.subject);
+        $("#oldmessage").val(data.message);
+        $("#idM").val(data.id);
       },
       error: function (xhr, status, error) {
         alert(error);
       },
     });
   };
- function sendEmail(){
+  function sendEmail() {
+    data = {
+      id:$('#idM').val(),
+      user: $('#usernameM').val(),
+      email: $('#emailM').val(),
+      subject: $('#subject').val(),
+      header: $('#header').val(),
+      message: $('#messageR').html(),
+      repond: "repond",
+    }
+    $.ajax({
+      method: "post",
+      data: data,
+      success: function () {
+        alert('reponde user successfully');
+        $("#contact"+id).toggleClass('btn-warning btn-success');
+      },
+      error: function (xhr, status, error) {
+        alert(error);
+      },
+    });
+  };
 
-  }
+  
 </script>
 <?php
 if (isset($_POST['delete'])) {
@@ -191,7 +224,21 @@ if (isset($_POST['delete'])) {
   $message = "Delete User successfully";
   $path = "Message-Contact.php";
   $app->Delete($query, $path, $message);
-};
+}
+if (isset($_POST['repond'])) {
+  $id = $_POST['id'];
+  $user = $_POST['user'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $header ="From :". $_POST['header']."\r\n";
+  $message = $_POST['message'];
+  mail($email,$subject,$message);
+    $status = "Confirmed";
+  $query = "UPDATE Contacte set status=? where id=?";
+  $arr = [$status, $id];
+  $message = "Repond Message successfully";
+  $path = "Message-Contact.php";
+  $app->Update($query, $arr, $path, $message);
 
-
+}
 include_once('layout/footer.php'); ?>
