@@ -74,13 +74,8 @@ $messages = $app->SelectAll("SELECT * from Contacte");
                 </button>
               </td>
               <td>
-                <button id="contact<?=$value->id?>" data-toggle="modal"  data-target="#exampleModal" onclick="getData('<?= $value->id ?>')"
-                  class="btn <?php
-                    if ($value->status == "Pending") {
-                      echo "btn-warning";
-                    } else {
-                      echo "btn-success disabled";
-                    } ?> text-white"> 
+                <button data-toggle="modal" data-target="#exampleModal" onclick="getData('<?= $value->id ?>')"
+                  class="btn btn-success text-white">
                   <i class="nav-icon fas fa-envelope "></i>
                 </button>
               </td>
@@ -88,6 +83,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
           <?php endforeach; ?>
         </tbody>
         <tfoot>
+          <tr>
           <tr>
             <th>ID </th>
             <th>User Name</th>
@@ -97,6 +93,7 @@ $messages = $app->SelectAll("SELECT * from Contacte");
             <th>Creation Date</th>
             <th>Delete</th>
             <th>Answer</th>
+          </tr>
           </tr>
         </tfoot>
       </table>
@@ -207,7 +204,6 @@ $messages = $app->SelectAll("SELECT * from Contacte");
       data: data,
       success: function () {
         alert('reponde user successfully');
-        $("#contact"+id).toggleClass('btn-warning btn-success');
       },
       error: function (xhr, status, error) {
         alert(error);
@@ -237,7 +233,7 @@ if (isset($_POST['repond'])) {
   $query = "UPDATE Contacte set status=? where id=?";
   $arr = [$status, $id];
   $message = "Repond Message successfully";
-  $path = "Message-Contact.php";
+  $path = "ShowBookings.php";
   $app->Update($query, $arr, $path, $message);
 
 }
