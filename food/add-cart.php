@@ -54,7 +54,7 @@ $app->Insert($query,$arry,$path,$message);
                     <div class="col-md-6">
                         <div class="row g-3">
                             <div class="col-12 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="<?php echo APPURL.' /img/' . $taba9->image ?>">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="<?php echo IMAG  . $taba9->image ?>">
                             </div>
 
                         </div>
