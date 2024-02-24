@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
                            <?php 
                              foreach ($allCart as $val) : ?>
                           <tr>
-                            <td><img  width="130px" height="80px" src="<?php echo APPURL.' /img/'.$val->image ?>" /></td>
+                            <td><img  width="130px" height="80px" src="<?php echo IMAG.$val->image ?>" /></td>
                             <td><?= $val->name ?></td>
                             <td><?= $val->prix ?> MAD</td>
                             <td><a class="btn btn-outline-danger text-white"

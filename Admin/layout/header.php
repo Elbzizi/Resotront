@@ -19,6 +19,7 @@ $contactes = $app->SelectAll($query1);
 
 $norpo = $app->SelectOne("SELECT COUNT(*) AS num FROM Contacte where status='Pending'");
 $noconf = $app->SelectOne("SELECT COUNT(*) AS num FROM orders where status='Pending'");
+$Tabnoconf = $app->SelectOne("SELECT COUNT(*) AS num FROM bookings where status='Pending'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,12 +177,12 @@ $noconf = $app->SelectOne("SELECT COUNT(*) AS num FROM orders where status='Pend
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
             <span class="badge badge-warning navbar-badge">
-              <?= $noconf->num + $norpo->num ?>
+              <?= $noconf->num + $norpo->num + $Tabnoconf->num ?>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">
-              <?= $noconf->num + $norpo->num ?> Notifications
+              <?= $noconf->num + $norpo->num + $Tabnoconf->num ?> Notifications
             </span>
             <div class="dropdown-divider"></div>
             <a href="<?= APPADM ?>/Message-Contact.php" class="dropdown-item">
@@ -189,11 +190,18 @@ $noconf = $app->SelectOne("SELECT COUNT(*) AS num FROM orders where status='Pend
               <?= $norpo->num ?> new messages no response
               <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
             </a>
+            
             <div class="dropdown-divider"></div>
-            <a href="<?= APPADM ?>/ShowBookings.php" class="dropdown-item">
+            <a href="<?= APPADM ?>/ShowOrders.php" class="dropdown-item">
               <i class="fas fa-users mr-2"></i>
               <?= $noconf->num ?> Orders not confirmed
               <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="<?= APPADM ?>/ShowBookings.php" class="dropdown-item">
+            <i class="fas fa-calendar-alt mr-2"></i>
+
+              <?= $Tabnoconf->num ?> Bookings not confirmed
             </a>
 
         </li>
