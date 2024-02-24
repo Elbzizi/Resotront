@@ -26,16 +26,14 @@ CREATE TABLE `foods` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ;
 INSERT INTO `foods` (`id`, `name`, `image`, `description`, `prix`, `meal_id`, `created_at`) VALUES
-(1, 'chicken wings', 'menu-1.jpg', 'Energistically recaptiualize prospective manufactured ', '10', 1, '2023-04-08 11:44:38'),
-(2, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 2, '2023-04-08 11:44:38'),
-(3, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 3, '2023-04-08 11:44:38'),
-(6, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 1, '2023-04-08 11:44:38'),
-(7, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
-(default, 'pizza', 'omelette-aux-fines-herbes.jpeg', "Une omelette légère et moelleuse garnie d'un mélange d'herbes fraîches telles que le persil, le basilic et l estragon. ", '20', 1,default),
-(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
-(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
-(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
-(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+(default, 'chicken wings', 'menu-1.jpg', 'Energistically recaptiualize prospective manufactured ', '10', 1, default),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 2, default),
+(default, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 3, default),
+(default, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 1, default),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, default),
+(default, 'omelette-aux-fines-herbes', 'omelette.jpeg', "Une omelette légère et moelleuse garnie d'un mélange d'herbes fraîches telles que le persil, le basilic et l estragon. ", '30', 1,default),
+(default, 'Pancakes aux myrtilles', 'Pancakes aux myrtilles.jpg', "Des pancakes moelleux garnis de myrtilles fraîches et arrosés de sirop d'érable pur. Accompagnés de tranches de bacon croustillant ou de saucisses de porc.", '50', 1, default),
+(default, 'Salade César au poulet grillé', 'Salade César au poulet grillé.jpeg', "Une salade fraîche composée de laitue croquante, de morceaux de poulet grillé, de croûtons croustillants, de copeaux de parmesan et d'une vinaigrette César maison", '40', 2, default),
 ;
 
 -- -
