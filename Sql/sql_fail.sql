@@ -30,7 +30,13 @@ INSERT INTO `foods` (`id`, `name`, `image`, `description`, `prix`, `meal_id`, `c
 (2, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 2, '2023-04-08 11:44:38'),
 (3, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 3, '2023-04-08 11:44:38'),
 (6, 'steak', 'menu-3.jpg', 'Continually reintermediate wireless vortals through', '30', 1, '2023-04-08 11:44:38'),
-(7, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38');
+(7, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+(default, 'pizza', 'omelette-aux-fines-herbes.jpeg', "Une omelette légère et moelleuse garnie d'un mélange d'herbes fraîches telles que le persil, le basilic et l estragon. ", '20', 1,default),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+(default, 'pizza', 'menu-2.jpg', 'Holisticly simplify superior meta-services for ', '20', 1, '2023-04-08 11:44:38'),
+;
 
 -- -
 CREATE TABLE `cart` (
@@ -66,10 +72,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `email`, `town`, `country`, `zipcode`, `phone_number`, `address`, `total_price`, `user_id`, `status`, `created_at`) VALUES
-(7, 'Mohamed Hassan', 'moha@gmail.com', 'town', 'country', 209332, 123034333, 'Progressively communicate user friendly internal o', 10, 1, 'Pending', '2023-04-11 09:37:21'),
-(8, 'Mohamed Hassan', 'moha@gmail.com	', 'sample town', 'sample town', 923, 19232234, 'Efficiently exploit dynamic e-tailers before high-quality core competencies. Quickly administrate ', 40, 1, 'Pending', '2023-04-11 10:38:52'),
-(9, 'Mohamed Hassan', 'moha@gmail.com	', 'sample town', 'sample country', 2923, 10233444, 'Progressively communicate user friendly internal o', 30, 1, 'Pending', '2023-04-11 10:47:40'),
-(10, 'Mohamed Hassan', 'moha@gmail.com', 'sample town', 'sample country', 990032, 1929344, 'Collaboratively plagiarize maintainable products after viral growth strategies. Efficiently aggregate efficient ', 40, 1, 'Pending', '2023-04-11 11:02:45');
+(7, 'Omar El  Bzizi', 'omar@gmail.com', 'town', 'country', 209332, 123034333, 'Progressively communicate user friendly internal o', 10, 1, 'Pending', '2023-04-11 09:37:21'),
+(8, 'Omar El  Bzizi', 'omar@gmail.com	', 'sample town', 'sample town', 923, 19232234, 'Efficiently exploit dynamic e-tailers before high-quality core competencies. Quickly administrate ', 40, 1, 'Pending', '2023-04-11 10:38:52'),
+(9, 'Omar El  Bzizi', 'omar@gmail.com	', 'sample town', 'sample country', 2923, 10233444, 'Progressively communicate user friendly internal o', 30, 1, 'Pending', '2023-04-11 10:47:40'),
+(10, 'Omar El  Bzizi', 'omar@gmail.com', 'sample town', 'sample country', 990032, 1929344, 'Collaboratively plagiarize maintainable products after viral growth strategies. Efficiently aggregate efficient ', 40, 1, 'Pending', '2023-04-11 11:02:45');
 
 
 CREATE TABLE `bookings` (
@@ -89,11 +95,11 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `name`, `email`, `date_booking`, `num_people`, `special_request`, `status`, `user_id`, `created_at`) VALUES
-(1, 'zzzzzzzzzz', 'moha123@gmail.com', '04/12/2023 3:13 PM', 3, 'Energistically actualize B2B web-readiness after', 'Confirmed', 1, '2023-04-09 13:13:17'),
-(2, 'Mohamed Hassan', 'moha123@gmail.com', '04/11/2023 3:15 PM', 2, 'Rapidiously expedite team driven potentialities with interoperable \"outside the box\" thinking. Professionally formulate cross-platform internaProgressively communicate user friendly internal o', 'Done', 1, '2023-04-09 13:16:01'),
-(4, 'Mohamed Hassan', 'moha123@gmail.com', '04/12/2023 12:40 PM', 2, 'Energistically actualize B2B web-readiness after', 'Pending', 1, '2023-04-11 10:40:46'),
-(5, 'Mohamed Hassan', 'moha123@gmail.com', '04/13/2023 12:45 PM', 2, 'Energistically actualize B2B web-readiness after', 'Pending', 1, '2023-04-11 10:48:59'),
-(6, 'Mohamed Hassan', 'Moha123@gmail.com', '04/12/2023 12:59 PM', 2, 'Quickly grow prospective ideas and backend ', 'Pending', 1, '2023-04-11 11:00:15');
+(1, 'zzzzzzzzzz', 'omar123@gmail.com', '04/12/2023 3:13 PM', 3, 'Energistically actualize B2B web-readiness after', 'Confirmed', 1, '2023-04-09 13:13:17'),
+(2, 'Omar El  Bzizi', 'omar123@gmail.com', '04/11/2023 3:15 PM', 2, 'Rapidiously expedite team driven potentialities with interoperable \"outside the box\" thinking. Professionally formulate cross-platform internaProgressively communicate user friendly internal o', 'Done', 1, '2023-04-09 13:16:01'),
+(4, 'Omar El  Bzizi', 'omar123@gmail.com', '04/12/2023 12:40 PM', 2, 'Energistically actualize B2B web-readiness after', 'Pending', 1, '2023-04-11 10:40:46'),
+(5, 'Omar El  Bzizi', 'omar123@gmail.com', '04/13/2023 12:45 PM', 2, 'Energistically actualize B2B web-readiness after', 'Pending', 1, '2023-04-11 10:48:59'),
+(6, 'Omar El  Bzizi', 'omar123@gmail.com', '04/12/2023 12:59 PM', 2, 'Quickly grow prospective ideas and backend ', 'Pending', 1, '2023-04-11 11:00:15');
 
 CREATE TABLE `reviews` (
   `id` int(10) NOT NULL,
@@ -107,9 +113,9 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `review`, `username`, `created_at`) VALUES
-(1, 'Collaboratively empower visionary infomediaries through installed base outsourcing. Progressively iterate B2C communities and top-line content. ', 'Mohamed Hassan', '2023-04-09 14:09:46'),
-(2, ' outsourcing. Progressively iterate B2C communities and top-line content. ', 'Mohamed Hassan', '2023-04-09 14:09:46'),
-(3, '', 'Mohamed123', '2023-04-11 10:49:50');
+(1, 'Collaboratively empower visionary infomediaries through installed base outsourcing. Progressively iterate B2C communities and top-line content. ', 'Omar El  Bzizi', '2023-04-09 14:09:46'),
+(2, ' outsourcing. Progressively iterate B2C communities and top-line content. ', 'Omar El  Bzizi', '2023-04-09 14:09:46'),
+(3, '', 'omarmed123', '2023-04-11 10:49:50');
 
 CREATE  TABLE `Contacte` (
   `id` int(10) NOT NULL primary Key auto_increment,
